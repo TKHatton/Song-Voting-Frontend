@@ -5,7 +5,6 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog.jsx'
 import { Heart, Share2, ExternalLink, Users, Clock, Trophy, Instagram, Linkedin, Twitter, Facebook, Play, Vote } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import './App.css'
 
 // API base URL - will work with both development and production
 const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:5000/api' : '/api';

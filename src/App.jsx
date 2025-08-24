@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+// Add this after your imports, before the App function
+const API_BASE = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000/api' 
+  : 'https://song-voting-backend.onrender.com';
+
 function App() {
   const [timeLeft, setTimeLeft] = useState({});
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -13,6 +18,25 @@ function App() {
   });
   const [showVotingModal, setShowVotingModal] = useState(false);
   const [videoModal, setVideoModal] = useState({ isOpen: false, video: null });
+
+// Load votes from backend on component mount
+useEffect(() => {
+  const loadVotes = async () => {
+    try {
+      const response = await fetch(`${API_BASE}/votes`);
+      const data = await response.json();
+      
+      if (data.success) {
+        setVotes(data.votes);
+      }
+    } catch (error) {
+      console.error('Error loading votes:', error);
+      // Keep existing local vote counts if API fails
+    }
+  };
+
+  loadVotes();
+}, []);
 
   // Calculate countdown timer (14 days from now)
   useEffect(() => {
@@ -199,20 +223,42 @@ function App() {
     }));
   };
 
-  const submitVote = () => {
-    if (!socialFollows.instagram || !socialFollows.linkedin || !socialFollows.twitter) {
-      alert('Please follow all social media accounts before voting!');
-      return;
-    }
+  const submitVote = async () => {
+  if (!socialFollows.instagram || !socialFollows.linkedin || !socialFollows.twitter) {
+    alert('Please follow all social media accounts before voting!');
+    return;
+  }
 
-    setVotes(prev => ({
-      ...prev,
-      [selectedVideo]: (prev[selectedVideo] || 0) + 1
-    }));
-    setHasVoted(true);
-    setShowVotingModal(false);
-    alert('Thank you for voting!');
-  };
+  try {
+    const response = await fetch(`${API_BASE}/vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        video_id: selectedVideo,
+        social_follows: socialFollows
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setVotes(prev => ({
+        ...prev,
+        [selectedVideo]: data.new_vote_count
+      }));
+      setHasVoted(true);
+      setShowVotingModal(false);
+      alert('Thank you for voting!');
+    } else {
+      alert(data.error || 'Failed to submit vote');
+    }
+  } catch (error) {
+    console.error('Error submitting vote:', error);
+    alert('Failed to submit vote. Please try again.');
+  }
+};
 
   return (
     <div className="min-h-screen bg-black text-white">

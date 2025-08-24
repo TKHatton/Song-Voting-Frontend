@@ -7,20 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#fefce8',
-          100: '#fef9c3',
-          200: '#fef08a',
-          300: '#fde047',
-          400: '#facc15',
-          500: '#eab308',
-          600: '#ca8a04',
-          700: '#a16207',
-          800: '#854d0e',
-          900: '#713f12',
-        },
-        golden: {
-          50: '#fefce8',
+        gold: {
+          50: '#fffbeb',
           100: '#fef3c7',
           200: '#fde68a',
           300: '#fcd34d',
@@ -30,12 +18,22 @@ export default {
           700: '#b45309',
           800: '#92400e',
           900: '#78350f',
+        },
+        'she-is-ai': {
+          primary: '#f59e0b',
+          secondary: '#fbbf24',
+          accent: '#fcd34d',
         }
+      },
+      fontFamily: {
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
-        'pulse-golden': 'pulseGolden 2s infinite',
+        'pulse-gold': 'pulseGold 2s infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
       },
       keyframes: {
         fadeIn: {
@@ -46,9 +44,13 @@ export default {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
-        pulseGolden: {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(251, 191, 36, 0.7)' },
-          '50%': { boxShadow: '0 0 0 10px rgba(251, 191, 36, 0)' },
+        pulseGold: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+        },
+        glow: {
+          '0%': { boxShadow: '0 0 5px #f59e0b, 0 0 10px #f59e0b, 0 0 15px #f59e0b' },
+          '100%': { boxShadow: '0 0 10px #f59e0b, 0 0 20px #f59e0b, 0 0 30px #f59e0b' },
         },
       },
     },

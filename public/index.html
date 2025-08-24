@@ -2,71 +2,187 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
     <title>We Rewrite the Light - SHE IS AI Video Competition Voting</title>
     <meta name="title" content="We Rewrite the Light - SHE IS AI Video Competition Voting" />
-    <meta name="description" content="Vote for your favorite video in the SHE IS AI 'We Rewrite the Light' theme song video competition. Community voting to select the winner from talented creators worldwide." />
-    <meta name="keywords" content="SHE IS AI, We Rewrite the Light, video competition, voting, AI, women in tech, theme song, Lenise Kenney" />
+    <meta name="description" content="Vote for your favorite interpretation of 'We Rewrite the Light' by talented creators from around the world. Join the SHE IS AI community in celebrating creativity and innovation." />
+    <meta name="keywords" content="SHE IS AI, video competition, voting, AI, women in tech, creativity, innovation, We Rewrite the Light" />
     <meta name="author" content="SHE IS AI" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://voting.sheisai.ai/" />
     <meta property="og:title" content="We Rewrite the Light - SHE IS AI Video Competition Voting" />
-    <meta property="og:description" content="Vote for your favorite video in the SHE IS AI 'We Rewrite the Light' theme song video competition. Community voting to select the winner from talented creators worldwide." />
-    <meta property="og:image" content="/assets/hero-campaign.jpeg" />
+    <meta property="og:description" content="Vote for your favorite interpretation of 'We Rewrite the Light' by talented creators from around the world. Join the SHE IS AI community in celebrating creativity and innovation." />
+    <meta property="og:image" content="/assets/SHEISAI-COVER-SONG-YOUTUBE-16-9px-us(2).jpeg" />
     <meta property="og:site_name" content="SHE IS AI" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://voting.sheisai.ai/" />
     <meta property="twitter:title" content="We Rewrite the Light - SHE IS AI Video Competition Voting" />
-    <meta property="twitter:description" content="Vote for your favorite video in the SHE IS AI 'We Rewrite the Light' theme song video competition. Community voting to select the winner from talented creators worldwide." />
-    <meta property="twitter:image" content="/assets/hero-campaign.jpeg" />
-    <meta property="twitter:site" content="@sheisai" />
+    <meta property="twitter:description" content="Vote for your favorite interpretation of 'We Rewrite the Light' by talented creators from around the world. Join the SHE IS AI community in celebrating creativity and innovation." />
+    <meta property="twitter:image" content="/assets/SHEISAI-COVER-SONG-YOUTUBE-16-9px-us(2).jpeg" />
+    <meta property="twitter:site" content="@sheisai_" />
     
     <!-- Additional Meta Tags -->
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="1 days" />
     
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#f59e0b" />
+    <meta name="msapplication-TileColor" content="#f59e0b" />
+    
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="/assets/hero-campaign.jpeg" as="image" />
+    <link rel="preload" href="/assets/SHEISAI-COVER-SONG-YOUTUBE-16-9px-us(2).jpeg" as="image" />
     <link rel="preload" href="/assets/sheisai-logo.png" as="image" />
     
-    <!-- Favicon and App Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#000000" />
-    <meta name="msapplication-TileColor" content="#000000" />
-    
-    <!-- Structured Data for SEO -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Contest",
-      "name": "We Rewrite the Light - SHE IS AI Video Competition",
-      "description": "Vote for your favorite video in the SHE IS AI 'We Rewrite the Light' theme song video competition. Community voting to select the winner from talented creators worldwide.",
-      "organizer": {
+      "name": "We Rewrite the Light Video Competition",
+      "description": "A video competition celebrating creativity and innovation in AI, featuring interpretations of the SHE IS AI theme song 'We Rewrite the Light'",
+      "sponsor": {
         "@type": "Organization",
         "name": "SHE IS AI",
         "url": "https://sheisai.ai"
       },
-      "url": "https://voting.sheisai.ai",
-      "image": "/assets/hero-campaign.jpeg",
-      "startDate": "2025-08-20",
-      "endDate": "2025-09-03"
+      "startDate": "2024-08-22",
+      "endDate": "2024-09-05",
+      "url": "https://voting.sheisai.ai"
     }
     </script>
     
-    <!-- Google Analytics (Optional - replace with your tracking ID) -->
+    <style>
+      /* Loading Screen Styles */
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #1a1a1a, #000);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      #loading-screen.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .loading-logo {
+        width: 120px;
+        height: auto;
+        margin-bottom: 20px;
+        animation: pulse 2s infinite;
+      }
+      
+      .loading-text {
+        color: #f59e0b;
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+      
+      .loading-spinner {
+        border: 3px solid #333;
+        border-top: 3px solid #f59e0b;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Hide main content until loaded */
+      #root {
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+      }
+      
+      #root.loaded {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <img src="/assets/sheisai-logo.png" alt="SHE IS AI" class="loading-logo" onerror="this.style.display='none'" />
+      <div class="loading-text">Loading Competition Platform...</div>
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- Main App -->
+    <div id="root"></div>
+    
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+      // Loading screen management
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          const root = document.getElementById('root');
+          
+          loadingScreen.classList.add('fade-out');
+          root.classList.add('loaded');
+          
+          setTimeout(function() {
+            loadingScreen.style.display = 'none';
+          }, 500);
+        }, 1000);
+      });
+      
+      // Social sharing functions
+      function shareOnTwitter(text, url) {
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        window.open(twitterUrl, '_blank', 'width=600,height=400');
+      }
+      
+      function shareOnFacebook(url) {
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        window.open(facebookUrl, '_blank', 'width=600,height=400');
+      }
+      
+      function shareOnLinkedIn(url, title, summary) {
+        const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        window.open(linkedinUrl, '_blank', 'width=600,height=400');
+      }
+      
+      // Make functions globally available
+      window.shareOnTwitter = shareOnTwitter;
+      window.shareOnFacebook = shareOnFacebook;
+      window.shareOnLinkedIn = shareOnLinkedIn;
+    </script>
+    
+    <!-- Optional: Google Analytics (replace with your tracking ID) -->
     <!-- 
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
     <script>
@@ -76,113 +192,6 @@
       gtag('config', 'GA_TRACKING_ID');
     </script>
     -->
-    
-    <!-- Fonts (Optional - if you want to preload specific fonts) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- CSS Variables for Theme -->
-    <style>
-      :root {
-        --primary-color: #d4af37;
-        --background-color: #000000;
-        --text-color: #ffffff;
-      }
-      
-      /* Loading Screen */
-      #loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease-out;
-      }
-      
-      .loading-logo {
-        width: 200px;
-        height: auto;
-        opacity: 0.8;
-        animation: pulse 2s infinite;
-      }
-      
-      @keyframes pulse {
-        0%, 100% { opacity: 0.8; }
-        50% { opacity: 1; }
-      }
-      
-      /* Hide loading screen when app loads */
-      .loaded #loading-screen {
-        opacity: 0;
-        pointer-events: none;
-      }
-      
-      /* Base styles */
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        background-color: var(--background-color);
-        color: var(--text-color);
-      }
-      
-      #root {
-        min-height: 100vh;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-      <img src="/assets/sheisai-logo.png" alt="SHE IS AI" class="loading-logo" />
-    </div>
-    
-    <!-- Main App Container -->
-    <div id="root"></div>
-    
-    <!-- React App Script -->
-    <script type="module" src="/src/main.jsx"></script>
-    
-    <!-- Loading Screen Script -->
-    <script>
-      // Hide loading screen when React app loads
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          document.body.classList.add('loaded');
-        }, 500);
-      });
-      
-      // Fallback: Hide loading screen after 3 seconds
-      setTimeout(function() {
-        document.body.classList.add('loaded');
-      }, 3000);
-    </script>
-    
-    <!-- Social Media Integration Scripts (Optional) -->
-    <script>
-      // Share functionality
-      function shareToSocial(platform, url, text) {
-        const shareUrls = {
-          twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
-          facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-          linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
-        };
-        
-        if (shareUrls[platform]) {
-          window.open(shareUrls[platform], '_blank', 'width=600,height=400');
-        }
-      }
-      
-      // Make function globally available
-      window.shareToSocial = shareToSocial;
-    </script>
   </body>
 </html>
 

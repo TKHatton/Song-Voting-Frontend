@@ -1,15 +1,19 @@
 [build]
-  # Build command
-  command = "npm install && npm run build"
+  # Build command - using npm with legacy peer deps to handle dependency conflicts
+  command = "npm install --legacy-peer-deps && npm run build"
   
   # Directory to publish
   publish = "dist"
 
 [build.environment]
-  # Node version
-  NODE_VERSION = "18"
-  # Force npm instead of pnpm
-  NPM_FLAGS = "--legacy-peer-deps"
+  # Node version - using Node 20 LTS (supported by Netlify)
+  NODE_VERSION = "20"
+  
+  # Disable npm audit to speed up builds
+  NPM_CONFIG_AUDIT = "false"
+  
+  # Use legacy peer deps to handle dependency conflicts
+  NPM_CONFIG_LEGACY_PEER_DEPS = "true"
 
 # Redirect rules for SPA
 [[redirects]]
@@ -31,13 +35,30 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Cache video files when added later
 [[headers]]
-  for = "/*.js"
+  for = "/videos/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400"
 
 [[headers]]
-  for = "/*.css"
+  for = "/thumbnails/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400"
+
+# Optimize images and assets
+[build.processing]
+  skip_processing = false
+
+[build.processing.images]
+  compress = true
+
+# Handle large files (for when videos are added)
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
 

@@ -271,14 +271,16 @@ useEffect(() => {
 
   // Navigation component
 const Navigation = () => (
-  <nav className="bg-black/90 border-b border-gray-800 backdrop-blur">
+  <nav className="bg-black/90 border-b border-gray-800">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="h-16 grid grid-cols-[auto,1fr,auto] items-center gap-4">
+      <div className="h-16 flex items-center gap-4">
+        {/* logo */}
         <a href="https://sheisai.ai" className="flex items-center">
           <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
         </a>
 
-        <ul className="hidden md:flex justify-center items-center gap-8 uppercase tracking-wider text-[13px] font-semibold">
+        {/* center links */}
+        <ul className="hidden md:flex flex-1 justify-center items-center gap-8 uppercase tracking-wider text-[13px] font-semibold">
           <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a></li>
           <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/magazine">MAGAZINE</a></li>
           <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a></li>
@@ -289,12 +291,12 @@ const Navigation = () => (
           <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/contact-us">CONTACT</a></li>
         </ul>
 
-        {/* pill CTA */}
+        {/* pill CTA on the right */}
         <a
           href="https://sheisai.ai/become-a-member"
-          className="whitespace-nowrap rounded-full border-2 border-teal-400 text-teal-300 px-6 py-2 text-sm font-extrabold tracking-wider transition
-                     hover:bg-teal-400 hover:text-black
-                     shadow-[0_0_0_2px_rgba(45,212,191,.15)_inset]"
+          className="shrink-0 inline-flex items-center rounded-full border-2 px-6 py-2 text-sm font-extrabold tracking-wider
+                     border-teal-400 text-teal-300 hover:bg-teal-400 hover:text-black transition
+                     ring-1 ring-teal-400/30"
         >
           BECOME A MEMBER
         </a>

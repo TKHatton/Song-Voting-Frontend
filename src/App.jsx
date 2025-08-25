@@ -270,41 +270,34 @@ useEffect(() => {
   };
 
   // Navigation component
-  const Navigation = () => (
-  <nav className="bg-black/90 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
+const Navigation = () => (
+  <nav className="bg-black/90 border-b border-gray-800 backdrop-blur">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="nav-container h-16">
-        <div className="flex items-center">
-          <a href="https://sheisai.ai" className="flex-shrink-0">
-            <img
-              src="/assets/sheisai-logo.png"
-              alt="SHE IS AI"
-              className="h-8 w-auto"
-              onError={(e) => { e.target.style.display='none'; e.target.nextSibling.style.display='block'; }}
-            />
-            <span className="text-yellow-400 font-bold text-xl hidden">SHE IS AI</span>
-          </a>
-        </div>
+      <div className="h-16 grid grid-cols-[auto,1fr,auto] items-center gap-4">
+        <a href="https://sheisai.ai" className="flex items-center">
+          <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
+        </a>
 
-        {/* all links inline, CTA last */}
-        <div className="nav-links">
-          <a href="https://sheisai.ai/ai-fashion-awards" className="nav-link">AI FASHION AWARDS</a>
-          <a href="https://sheisai.ai/magazine" className="nav-link">MAGAZINE</a>
-          <a href="https://sheisai.ai/she-is-ai-community" className="nav-link">5 PILLARS</a>
-          <a href="https://sheisai.ai/xpert-agency" className="nav-link">AGENCY</a>
-          <a href="https://sheisai.ai/metaverse-gallery" className="nav-link">METAVERSE</a>
-          <a href="https://sheisai.ai/she-is-ai-news" className="nav-link">NEWS</a>
-          <a href="https://sheisai.ai/about" className="nav-link">ABOUT</a>
-          <a href="https://sheisai.ai/contact" className="nav-link">CONTACT</a>
+        <ul className="hidden md:flex justify-center items-center gap-8 uppercase tracking-wider text-[13px] font-semibold">
+          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a></li>
+          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/magazine">MAGAZINE</a></li>
+          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a></li>
+          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/xpert-agency">AGENCY</a></li>
+          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a></li>
+          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/she-is-ai-news">NEWS</a></li>
+          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/about">ABOUT</a></li>
+          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/contact">CONTACT</a></li>
+        </ul>
 
-          {/* CTA */}
-          <a
-            href="https://sheisai.ai/become-a-member"
-            className="ml-2 inline-block border border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-3 py-2 text-sm font-medium rounded transition-colors"
-          >
-            BECOME A MEMBER
-          </a>
-        </div>
+        {/* pill CTA */}
+        <a
+          href="https://sheisai.ai/become-a-member"
+          className="whitespace-nowrap rounded-full border-2 border-teal-400 text-teal-300 px-6 py-2 text-sm font-extrabold tracking-wider transition
+                     hover:bg-teal-400 hover:text-black
+                     shadow-[0_0_0_2px_rgba(45,212,191,.15)_inset]"
+        >
+          BECOME A MEMBER
+        </a>
       </div>
     </div>
   </nav>

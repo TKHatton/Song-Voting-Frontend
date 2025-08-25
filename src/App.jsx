@@ -128,12 +128,12 @@ function App() {
     {
       id: 6,
       title: 'Cultural Perspective',
-      creator: 'Ngawai Lule',
+      creator: 'Nagawa Lule',
       duration: '3:42',
       description: 'A beautiful cultural perspective from New Zealand',
       thumbnail: '/thumbnails/ngawai-lule.jpg',
       videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
-      linkedinUrl: 'https://nz.linkedin.com/in/ngawai-little-6a0856128',
+      linkedinUrl: 'https://www.linkedin.com/in/nagawa-l/',
       votes: votes[6] || 0
     },
     {

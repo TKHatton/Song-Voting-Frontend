@@ -271,44 +271,44 @@ useEffect(() => {
 
   // Navigation component
   const Navigation = () => (
-    <nav className="bg-black/90 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="nav-container h-16">
-          <div className="flex items-center">
-            <a href="https://sheisai.ai" className="flex-shrink-0">
-              <img 
-                src="/assets/sheisai-logo.png" 
-                alt="SHE IS AI" 
-                className="h-8 w-auto"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-              <span className="text-yellow-400 font-bold text-xl hidden">SHE IS AI</span>
-            </a>
-          </div>
-          
-          <div className="nav-links">
-            <a href="https://sheisai.ai/ai-fashion-awards" className="nav-link">AI FASHION AWARDS</a>
-            <a href="https://sheisai.ai/magazine" className="nav-link">MAGAZINE</a>
-            <a href="https://sheisai.ai/she-is-ai-community" className="nav-link">5 PILLARS</a>
-            <a href="https://sheisai.ai/xpert-agency" className="nav-link">AGENCY</a>
-            <a href="https://sheisai.ai/metaverse-gallery" className="nav-link">METAVERSE</a>
-            <a href="https://sheisai.ai/she-is-ai-news" className="nav-link">NEWS</a>
-            <a href="https://sheisai.ai/about" className="nav-link">ABOUT</a>
-            <a href="https://sheisai.ai/contact" className="nav-link">CONTACT</a>
-          </div>
-          
-          <div className="flex items-center">
-            <a href="https://sheisai.ai/become-a-member" className="border border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-4 py-2 text-sm font-medium tracking-wide transition-colors rounded">
-              BECOME A MEMBER
-            </a>
-          </div>
+  <nav className="bg-black/90 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="nav-container h-16">
+        <div className="flex items-center">
+          <a href="https://sheisai.ai" className="flex-shrink-0">
+            <img
+              src="/assets/sheisai-logo.png"
+              alt="SHE IS AI"
+              className="h-8 w-auto"
+              onError={(e) => { e.target.style.display='none'; e.target.nextSibling.style.display='block'; }}
+            />
+            <span className="text-yellow-400 font-bold text-xl hidden">SHE IS AI</span>
+          </a>
+        </div>
+
+        {/* all links inline, CTA last */}
+        <div className="nav-links">
+          <a href="https://sheisai.ai/ai-fashion-awards" className="nav-link">AI FASHION AWARDS</a>
+          <a href="https://sheisai.ai/magazine" className="nav-link">MAGAZINE</a>
+          <a href="https://sheisai.ai/she-is-ai-community" className="nav-link">5 PILLARS</a>
+          <a href="https://sheisai.ai/xpert-agency" className="nav-link">AGENCY</a>
+          <a href="https://sheisai.ai/metaverse-gallery" className="nav-link">METAVERSE</a>
+          <a href="https://sheisai.ai/she-is-ai-news" className="nav-link">NEWS</a>
+          <a href="https://sheisai.ai/about" className="nav-link">ABOUT</a>
+          <a href="https://sheisai.ai/contact" className="nav-link">CONTACT</a>
+
+          {/* CTA */}
+          <a
+            href="https://sheisai.ai/become-a-member"
+            className="ml-2 inline-block border border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-3 py-2 text-sm font-medium rounded transition-colors"
+          >
+            BECOME A MEMBER
+          </a>
         </div>
       </div>
-    </nav>
-  );
+    </div>
+  </nav>
+);
 
   // Privacy Policy Page
   const PrivacyPolicyPage = () => (

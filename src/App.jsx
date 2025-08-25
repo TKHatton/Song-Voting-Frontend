@@ -154,7 +154,7 @@ function App() {
       duration: '3:15',
       description: 'Business optimization expert\'s empowering visual narrative',
       thumbnail: '/thumbnails/rachel-lavern.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
+      videoUrl: 'https://www.youtube.com/embed/Gf1xufsPNtI', // Replace with actual embed
       linkedinUrl: 'https://www.linkedin.com/in/rachellavern',
       votes: votes[8] || 0
     },

@@ -286,7 +286,7 @@ const Navigation = () => (
           <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a></li>
           <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/she-is-ai-news">NEWS</a></li>
           <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/about">ABOUT</a></li>
-          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/contact">CONTACT</a></li>
+          <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/contact-us">CONTACT</a></li>
         </ul>
 
         {/* pill CTA */}

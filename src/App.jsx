@@ -2,30 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-// At the top
 const API_BASE =
   window.location.hostname === 'localhost'
     ? 'http://localhost:8888/.netlify/functions'
     : '/.netlify/functions';
-
-// State…
-const [votes, setVotes] = useState({});
-
-// Load totals once on mount
-useEffect(() => {
-  let alive = true;
-  (async () => {
-    try {
-      const res = await fetch(`${API_BASE}/votes`, { cache: 'no-store' });
-      const data = await res.json();
-      if (alive && data?.success) setVotes(data.votes || {});
-    } catch (err) {
-      console.error('Error loading votes:', err);
-    }
-  })();
-  return () => { alive = false; };
-}, []);
-
 
 function App() {
   const [timeLeft, setTimeLeft] = useState({});
@@ -39,7 +19,6 @@ function App() {
 // Load totals from server on first render
 useEffect(() => {
   let alive = true;
-
   (async () => {
     try {
       const res = await fetch(`${API_BASE}/votes`, { cache: 'no-store' });

@@ -64,7 +64,7 @@ function App() {
     duration: '3:45',
     description: 'The original SHE IS AI theme song that inspired this competition',
     thumbnail: '/thumbnails/lenise-kenney.jpg',
-    videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
+    videoUrl: 'https://www.youtube.com/embed/<iframe width="560" height="315" src="https://www.youtube.com/embed/999LBsnovg8?si=gm_3WOoK_JO-H6Q3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>', // Replace with actual embed
     linkedinUrl: 'https://www.linkedin.com/in/lenise-kenney'
   };
 

@@ -437,6 +437,11 @@ function App() {
       <section className="hero-section relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
+          
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight uppercase leading-tight mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+          WE REWRITE <span className="text-yellow-400">THE LIGHT</span>
+          </h1>
+          
           <p className="text-lg sm:text-xl mb-8 max-w-3xl mx-auto">
             Vote for your favorite video in the SHE IS AI theme song competition. Community voting to select the winner.
           </p>

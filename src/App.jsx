@@ -1,10 +1,31 @@
+// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-// Add this after your imports, before the App function
-const API_BASE = window.location.hostname === 'localhost' 
-  ? 'http://localhost:5000/api' 
-  : 'https://song-voting-backend.onrender.com';
+// At the top
+const API_BASE =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:8888/.netlify/functions'
+    : '/.netlify/functions';
+
+// State…
+const [votes, setVotes] = useState({});
+
+// Load totals once on mount
+useEffect(() => {
+  let alive = true;
+  (async () => {
+    try {
+      const res = await fetch(`${API_BASE}/votes`, { cache: 'no-store' });
+      const data = await res.json();
+      if (alive && data?.success) setVotes(data.votes || {});
+    } catch (err) {
+      console.error('Error loading votes:', err);
+    }
+  })();
+  return () => { alive = false; };
+}, []);
+
 
 function App() {
   const [timeLeft, setTimeLeft] = useState({});
@@ -15,24 +36,25 @@ function App() {
   const [videoModal, setVideoModal] = useState({ isOpen: false, video: null });
   const [currentPage, setCurrentPage] = useState('home');
 
-  // Load votes from backend on component mount
-  useEffect(() => {
-    const loadVotes = async () => {
-      try {
-        const response = await fetch(`${API_BASE}/votes`);
-        const data = await response.json();
-        
-        if (data.success) {
-          setVotes(data.votes);
-        }
-      } catch (error) {
-        console.error('Error loading votes:', error);
-        // Keep existing local vote counts if API fails
-      }
-    };
+// Load totals from server on first render
+useEffect(() => {
+  let alive = true;
 
-    loadVotes();
-  }, []);
+  (async () => {
+    try {
+      const res = await fetch(`${API_BASE}/votes`, { cache: 'no-store' });
+      const data = await res.json();
+      if (alive && data?.success) {
+        setVotes(data.votes || {});
+      }
+    } catch (err) {
+      console.error('Error loading votes:', err);
+      // optional: keep existing counts / show a toast
+    }
+  })();
+
+  return () => { alive = false; };
+}, []);
 
   // Calculate countdown timer (14 days from now)
   useEffect(() => {

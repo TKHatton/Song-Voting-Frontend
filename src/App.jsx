@@ -215,42 +215,42 @@ useEffect(() => {
   };
 
   const submitVote = async () => {
-    try {
-      const response = await fetch(`${API_BASE}/vote`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          video_id: selectedVideo
-        })
-      });
+  try {
+    const response = await fetch(`${API_BASE}/vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        video_id: selectedVideo
+      })
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      if (data.success) {
-        setVotes(prev => ({
-          ...prev,
-          [selectedVideo]: data.new_vote_count
-        }));
-        setHasVoted(true);
-        setShowVotingModal(false);
-        alert('Thank you for voting!');
-      } else {
-        alert(data.error || 'Failed to submit vote');
-      }
-    } catch (error) {
-      console.error('Error submitting vote:', error);
-      // Fallback to local voting if backend fails
+    if (data.success) {
       setVotes(prev => ({
         ...prev,
-        [selectedVideo]: (prev[selectedVideo] || 0) + 1
+        [selectedVideo]: data.new_vote_count
       }));
       setHasVoted(true);
       setShowVotingModal(false);
       alert('Thank you for voting!');
+    } else {
+      // Handle the specific "already voted" error
+      if (data.error === 'ALREADY_VOTED_TODAY') {
+        alert('You have already voted for this video today. Please come back tomorrow to vote again!');
+      } else {
+        alert(data.error || 'Failed to submit vote');
+      }
+      setShowVotingModal(false);
     }
-  };
+  } catch (error) {
+    console.error('Error submitting vote:', error);
+    alert('Network error. Please try again.');
+    setShowVotingModal(false);
+  }
+};
 
   // Share functionality
   const handleShare = (video) => {

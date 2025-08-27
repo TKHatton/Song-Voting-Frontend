@@ -64,7 +64,7 @@ useEffect(() => {
     creator: 'Lenise Kenney',
     duration: '3:45',
     description: 'The original SHE IS AI theme song that inspired this competition',
-    thumbnail: '/thumbnails/lenise-kenney.jpg',
+    thumbnail: '/thumbnails/lenise-kenney.jpeg',
     videoUrl: 'https://www.youtube.com/embed/999LBsnovg8', // Replace with actual embed
     linkedinUrl: 'https://www.linkedin.com/in/lenise-kenney'
   };
@@ -441,7 +441,7 @@ const Navigation = () => (
             Vote daily for your favorites while the clock is ticking!
             Simple, quick, and your voice matters.
           </p>
-          
+
           {/* Countdown Timer */}
           <div className="mb-8">
             <div className="flex justify-center space-x-4 sm:space-x-8 mb-4">

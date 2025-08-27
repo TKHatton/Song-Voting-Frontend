@@ -204,15 +204,11 @@ useEffect(() => {
     setVideoModal({ isOpen: false, video: null });
   };
 
-  // Simplified voting - no social media verification required
-  const handleVote = (videoId) => {
-    if (hasVoted) {
-      alert('You have already voted!');
-      return;
-    }
-    setSelectedVideo(videoId);
-    setShowVotingModal(true);
-  };
+  // Allow vote attempts - let backend handle the 24-hour check
+const handleVote = (videoId) => {
+  setSelectedVideo(videoId);
+  setShowVotingModal(true);
+};
 
   const submitVote = async () => {
   try {
@@ -237,9 +233,8 @@ useEffect(() => {
       setShowVotingModal(false);
       alert('Thank you for voting!');
     } else {
-      // Handle the specific "already voted" error
       if (data.error === 'ALREADY_VOTED_TODAY') {
-        alert('You have already voted for this video today. Please come back tomorrow to vote again!');
+        alert('You have already voted today. Please come back tomorrow to vote again!');
       } else {
         alert(data.error || 'Failed to submit vote');
       }

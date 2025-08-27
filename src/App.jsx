@@ -438,8 +438,8 @@ const Navigation = () => (
           </p>
           
           <p className="text-sm text-yellow-400 mb-8 max-w-2xl mx-auto">
-            To vote, simply be logged into your social media accounts (Instagram, LinkedIn, Twitter). 
-            No verification required - just click vote and you're done!
+            Vote daily for your favorites while the clock is ticking!
+            Simple, quick, and your voice matters.
           </p>
           
           {/* Countdown Timer */}

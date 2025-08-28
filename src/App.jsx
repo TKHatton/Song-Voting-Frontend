@@ -14,6 +14,7 @@ function App() {
   const [hasVoted, setHasVoted] = useState(false);
   const [showVotingModal, setShowVotingModal] = useState(false);
   const [videoModal, setVideoModal] = useState({ isOpen: false, video: null });
+  const [imageModal, setImageModal] = useState({ isOpen: false, image: null });
   const [currentPage, setCurrentPage] = useState('home');
 
 // Load totals from server on first render
@@ -348,6 +349,14 @@ useEffect(() => {
 
   const closeVideo = () => {
     setVideoModal({ isOpen: false, video: null });
+  };
+
+  const openImage = (submission) => {
+  setImageModal({ isOpen: true, image: submission });
+  };
+
+  const closeImage = () => {
+  setImageModal({ isOpen: false, image: null });
   };
 
   // Allow vote attempts - let backend handle the 24-hour check
@@ -960,6 +969,45 @@ const Navigation = () => (
           </div>
         </div>
       )}
+      {imageModal.isOpen && (
+        <div className="modal-overlay">
+          <div className="bg-black rounded-lg max-w-6xl w-full max-h-[90vh] overflow-hidden relative">
+            <div className="flex justify-between items-center p-4 border-b border-gray-800">
+              <h3 className="text-xl font-bold">
+      {imageModal.image?.title}</h3>
+              <button 
+                onClick={closeImage}
+                className="text-gray-400 hover:text-white text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            <div className="p-4 flex justify-center">
+              <img
+                src={imageModal.image?.imageUrl || imageModal.image?.thumbnail}
+                alt={imageModal.image?.title}
+                className="max-w-full max-h-[70vh] object-contain cursor-zoom-in"
+                style={{ imageRendering: 'high-quality' }}
+                onClick={(e) => {
+                  if (e.target.style.transform === 'scale(2)') {
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.cursor = 'zoom-in';
+                  } else {
+                    e.target.style.transform = 'scale(2)';
+                    e.target.style.cursor = 'zoom-out';
+                  }
+                }}
+              />
+            </div>
+            <div className="p-4 border-t border-gray-800">
+              <p className="text-gray-300 mb-2">
+                by <a href={imageModal.image?.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:underline">{imageModal.image?.creator}</a>
+              </p>
+              <p className="text-gray-400">{imageModal.image?.description}</p>
+            </div>
+          </div>
+        </div>
+      )}  
     </div>
   );
 }

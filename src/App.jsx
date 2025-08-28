@@ -77,7 +77,7 @@ useEffect(() => {
       creator: 'Hellena Banner',
       duration: '0:15',
       description: 'Creative professional\'s inspiring style showcase - alternative work sample as original entry was lost',
-      thumbnail: '/thumbnails/hellena-banner.jpg',
+      thumbnail: '/thumbnails/hellena-banner.png',
       videoUrl: 'https://www.youtube.com/embed/SPvte1f4zc8',
       linkedinUrl: 'https://www.linkedin.com/in/hellena-banner', // Update with actual LinkedIn
       votes: votes[1] || 0,
@@ -100,7 +100,7 @@ useEffect(() => {
       creator: 'Barbara Estebaranz',
       duration: '0:59',
       description: 'Creative professional\'s dynamic interpretation of the SHE IS AI theme',
-      thumbnail: '/thumbnails/barbara-estebaranz.jpg',
+      thumbnail: '/thumbnails/barbara-estebaranz.png',
       videoUrl: 'https://www.youtube.com/embed/XCyFLdvlyUg',
       linkedinUrl: 'https://www.linkedin.com/in/barbara-estebaranz', // Update with actual LinkedIn
       votes: votes[3] || 0
@@ -189,7 +189,7 @@ useEffect(() => {
       creator: 'Nagawa Lule',
       duration: '0:45',
       description: 'A beautiful cultural perspective from UK',
-      thumbnail: '/thumbnails/nagawa-lule.jpg',
+      thumbnail: '/thumbnails/ngawai-lule.jpg',
       videoUrl: 'https://www.youtube.com/embed/Oa-r4GSRSCQ',
       linkedinUrl: 'https://www.linkedin.com/in/nagawa-l/',
       votes: votes[11] || 0

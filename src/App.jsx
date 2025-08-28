@@ -180,7 +180,7 @@ useEffect(() => {
       description: 'Innovative creative professional\'s unique take on the SHE IS AI message',
       thumbnail: '/thumbnails/julia-lewis.png',
       videoUrl: 'https://www.youtube.com/embed/sqIBbhjPf0E',
-      linkedinUrl: 'https://www.linkedin.com/in/julia-lewis', // Update with actual LinkedIn
+      linkedinUrl: 'https://www.linkedin.com/in/julia-lewis-genai/', // Update with actual LinkedIn
       votes: votes[10] || 0
     },
     {

@@ -16,6 +16,8 @@ function App() {
   const [videoModal, setVideoModal] = useState({ isOpen: false, video: null });
   const [imageModal, setImageModal] = useState({ isOpen: false, image: null });
   const [currentPage, setCurrentPage] = useState('home');
+  const [isVoting, setIsVoting] = useState(false);
+  const [error, setError] = useState(null);
 
 // Load totals from server on first render
 useEffect(() => {
@@ -272,8 +274,10 @@ useEffect(() => {
           src={submission.thumbnail} 
           alt={submission.title}
           className="video-thumbnail"
+          loading="lazy"
           onError={(e) => {
-            e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzMzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNvbWluZyBTb29uPC90ZXh0Pjwvc3ZnPg==';
+            e.target.src = 
+        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzMzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNvbWluZyBTb29uPC90ZXh0Pjwvc3ZnPg==';
           }}
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
@@ -326,9 +330,9 @@ useEffect(() => {
           <button 
             onClick={() => handleVote(submission.id)}
             className="flex-1 vote-button"
-            disabled={hasVoted}
+            disabled={hasVoted  || isVoting}
           >
-            VOTE NOW
+            {isVoting ? 'VOTING...' : 'VOTE NOW'}
           </button>
           <button 
             onClick={() => handleShare(submission)}
@@ -366,8 +370,13 @@ const handleVote = (videoId) => {
 };
 
   const submitVote = async () => {
-  try {
-    const response = await fetch(`${API_BASE}/vote`, {
+    if (isVoting) return; // Prevent double-clicks
+    setIsVoting(true);
+    setError(null);
+
+    try {
+    const response = await 
+fetch(`${API_BASE}/vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -867,9 +876,14 @@ const Navigation = () => (
             <div className="flex space-x-4">
               <button 
                 onClick={submitVote}
-                className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black py-2 px-4 rounded-lg font-semibold transition-colors"
+                disabled={isVoting}
+                className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
+                  isVoting
+                    ? 'bg-gray-400-text-gray-700 cursor-not-allowed'
+                    : 'bg-yellow-400 hover:bg-yellow-500 text-black'
+                }'}
               >
-                Confirm Vote
+                {isVoting ? 'SUBMITTING...' : 'Complete Vote'}
               </button>
               <button 
                 onClick={() => setShowVotingModal(false)}
@@ -888,7 +902,12 @@ const Navigation = () => (
           <div className="bg-black rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
             <div className="flex justify-between items-center p-4 border-b border-gray-800">
               <h3 className="text-xl font-bold">{videoModal.video?.title}</h3>
-              <button 
+              {error &&(
+                <div className="bg-red-600 text-white p-3 rounded mb-4 text-sm">
+                  {error}
+                </div>
+              )}
+              <button
                 onClick={closeVideo}
                 className="text-gray-400 hover:text-white text-2xl"
               >

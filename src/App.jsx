@@ -704,6 +704,7 @@ const Navigation = () => (
         </div>
       </section>
 
+      
       {/* Competition Submissions */}
       <section id="submissions" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
@@ -718,59 +719,6 @@ const Navigation = () => (
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {videoSubmissions.map(renderSubmissionCard)}
-                </div>
-                <div className="relative">
-                  <img 
-                    src={video.thumbnail} 
-                    alt={video.title}
-                    className="video-thumbnail"
-                    onError={(e) => {
-                      e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzMzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlZpZGVvIENvbWluZyBTb29uPC90ZXh0Pjwvc3ZnPg==';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                    <button 
-                      onClick={() => openVideo(video)}
-                      className="bg-red-600 hover:bg-red-700 text-white rounded-full p-3 transition-colors"
-                    >
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                      </svg>
-                    </button>
-                  </div>
-                  <div className="absolute bottom-4 right-4">
-                    <span className="bg-black/70 text-white px-2 py-1 text-sm rounded">{video.duration}</span>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-bold mb-2">{video.title}</h3>
-                  <p className="text-gray-300 mb-2">
-                    by <a href={video.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:underline">{video.creator}</a>
-                  </p>
-                  <p className="text-gray-400 text-sm mb-4">{video.description}</p>
-                  
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-yellow-400 font-semibold">{video.votes} votes</span>
-                  </div>
-                  
-                  <div className="flex space-x-2">
-                    <button 
-                      onClick={() => handleVote(video.id)}
-                      className="flex-1 vote-button"
-                      disabled={hasVoted}
-                    >
-                      VOTE NOW
-                    </button>
-                    <button 
-                      onClick={() => handleShare(video)}
-                      className="share-button"
-                    >
-                      Share
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

@@ -69,83 +69,85 @@ useEffect(() => {
     linkedinUrl: 'https://www.linkedin.com/in/lenise-kenney'
   };
 
-  // Competition video submissions (ready for embeds)
+  // Competition video submissions (organized alphabetically by last name)
   const videoSubmissions = [
     {
       id: 1,
-      title: 'Creative Interpretation',
-      creator: 'Alice Kranaviter',
-      duration: '3:24',
-      description: 'A creative interpretation of the SHE IS AI theme song',
-      thumbnail: '/thumbnails/alice-kranaviter.jpg',
-      videoUrl: 'https://www.youtube.com/embed/Og014KfobTs', // Replace with actual embed
-      linkedinUrl: 'https://it.linkedin.com/in/alice-kranaviter-7390b946',
-      votes: votes[1] || 0
+      title: 'Inspiring Visual Story',
+      creator: 'Hellena Banner',
+      duration: '0:15',
+      description: 'Creative professional\'s inspiring style showcase - alternative work sample as original entry was lost',
+      thumbnail: '/thumbnails/hellena-banner.jpg',
+      videoUrl: 'https://www.youtube.com/embed/SPvte1f4zc8', // Alternative work sample
+      linkedinUrl: 'https://www.linkedin.com/in/hellena-banner', // Update with actual LinkedIn
+      votes: votes[1] || 0,
+      isAlternative: true // Flag to show this is alternative content
     },
     {
       id: 2,
+      title: 'Dynamic Creative Expression',
+      creator: 'Barbara Estebaranz',
+      duration: '0:59',
+      description: 'Creative professional\'s dynamic interpretation of the SHE IS AI theme',
+      thumbnail: '/thumbnails/barbara-estebaranz.jpg',
+      videoUrl: 'https://www.youtube.com/embed/XCyFLdvlyUg',
+      linkedinUrl: 'https://www.linkedin.com/in/barbara-estebaranz', // Update with actual LinkedIn
+      votes: votes[2] || 0
+    },
+    {
+      id: 3,
+      title: 'Sustainable Fashion Vision',
+      creator: 'Sarah Forsythe',
+      duration: '3:33',
+      description: 'Sustainable fashion professional\'s inspiring interpretation',
+      thumbnail: '/thumbnails/sarah-forsythe.jpg',
+      videoUrl: 'https://www.youtube.com/embed/m1v0-qjQSWU',
+      linkedinUrl: 'https://www.linkedin.com/in/sarah-forsythe-207a978a',
+      votes: votes[3] || 0
+    },
+    {
+      id: 4,
       title: 'AI Video & Digital Storytelling',
       creator: 'Angela Fraser',
       duration: '4:12',
       description: 'AI Video, Fashion & Digital Storytelling interpretation',
       thumbnail: '/thumbnails/angela-fraser.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
+      videoUrl: 'https://www.youtube.com/embed/Q0Ow-m7P_pA',
       linkedinUrl: 'https://www.linkedin.com/in/angela-fraser',
-      votes: votes[2] || 0
-    },
-    {
-      id: 3,
-      title: 'Dynamic Visual Story',
-      creator: 'Flame Rozario',
-      duration: '3:56',
-      description: 'A dynamic visual story from Singapore\'s top digital marketing creator',
-      thumbnail: '/thumbnails/flame-rozario.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
-      linkedinUrl: 'https://sg.linkedin.com/in/flamerozario',
-      votes: votes[3] || 0
-    },
-    {
-      id: 4,
-      title: 'Innovative Take',
-      creator: 'Mike Parker',
-      duration: '3:18',
-      description: 'An innovative take on the SHE IS AI message',
-      thumbnail: '/thumbnails/mike-parker.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
-      linkedinUrl: 'https://www.linkedin.com/in/mikeparkerjr',
       votes: votes[4] || 0
     },
     {
       id: 5,
-      title: 'Creative Director\'s Vision',
-      creator: 'Mohammad Dadmand',
-      duration: '4:05',
-      description: 'Creative Director & AI Design Specialist\'s interpretation',
-      thumbnail: '/thumbnails/mohammad-dadmand.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
-      linkedinUrl: 'https://www.linkedin.com/in/mohamaddadmand',
+      title: 'Celebration of Diversity',
+      creator: 'Rubbia Hussain',
+      duration: '0:59',
+      description: 'AI content innovator\'s vibrant celebration of diversity in AI',
+      thumbnail: '/thumbnails/rubbia-hussain.jpg',
+      videoUrl: 'https://www.youtube.com/embed/58q5ObMsamM',
+      linkedinUrl: 'https://www.linkedin.com/in/rubbia-hussain',
       votes: votes[5] || 0
     },
     {
       id: 6,
-      title: 'Cultural Perspective',
-      creator: 'Nagawa Lule',
-      duration: '3:42',
-      description: 'A beautiful cultural perspective from New Zealand',
-      thumbnail: '/thumbnails/ngawai-lule.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
-      linkedinUrl: 'https://www.linkedin.com/in/nagawa-l/',
-      votes: votes[6] || 0
+      title: 'AI-Powered Creative Vision',
+      creator: 'May Kaneko',
+      duration: null, // Image submission
+      description: 'Stunning visual interpretation of the SHE IS AI theme through digital artistry',
+      thumbnail: '/thumbnails/may-kaneko.jpg',
+      imageUrl: '/images/may-kaneko-submission.jpg', // Image instead of video
+      linkedinUrl: 'https://www.linkedin.com/in/may-kaneko', // Update with actual LinkedIn
+      votes: votes[6] || 0,
+      isImage: true
     },
     {
       id: 7,
-      title: 'Cinematic Approach',
-      creator: 'Phillip Schein',
-      duration: '3:28',
-      description: 'A cinematic approach with stunning album cover visuals',
-      thumbnail: '/thumbnails/phillip-schein.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
-      linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
+      title: 'Creative Interpretation',
+      creator: 'Alice Kranaviter',
+      duration: '0:59',
+      description: 'A creative interpretation of the SHE IS AI theme song',
+      thumbnail: '/thumbnails/alice-kranaviter.jpg',
+      videoUrl: 'https://www.youtube.com/embed/Og014KfobTs',
+      linkedinUrl: 'https://it.linkedin.com/in/alice-kranaviter-7390b946',
       votes: votes[7] || 0
     },
     {
@@ -155,42 +157,109 @@ useEffect(() => {
       duration: '3:15',
       description: 'Business optimization expert\'s empowering visual narrative',
       thumbnail: '/thumbnails/rachel-lavern.jpg',
-      videoUrl: 'https://www.youtube.com/embed/Gf1xufsPNtI', // Replace with actual embed
+      videoUrl: 'https://www.youtube.com/embed/f0GBaDV9PLo',
       linkedinUrl: 'https://www.linkedin.com/in/rachellavern',
       votes: votes[8] || 0
     },
     {
       id: 9,
-      title: 'Celebration of Diversity',
-      creator: 'Rubbia Hussain',
-      duration: '2:52',
-      description: 'AI content innovator\'s vibrant celebration of diversity in AI',
-      thumbnail: '/thumbnails/rubbia-hussain.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
-      linkedinUrl: 'https://www.linkedin.com/in/rubbia-hussain',
+      title: 'Innovative Creative Vision',
+      creator: 'Julia Lewis',
+      duration: '3:18',
+      description: 'Innovative creative professional\'s unique take on the SHE IS AI message',
+      thumbnail: '/thumbnails/julia-lewis.jpg',
+      videoUrl: 'https://www.youtube.com/embed/sqIBbhjPf0E',
+      linkedinUrl: 'https://www.linkedin.com/in/julia-lewis', // Update with actual LinkedIn
       votes: votes[9] || 0
     },
     {
       id: 10,
-      title: 'Sustainable Vision',
-      creator: 'Sarah Forsythe',
-      duration: '3:33',
-      description: 'Sustainable fashion professional\'s inspiring interpretation',
-      thumbnail: '/thumbnails/sarah-forsythe.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
-      linkedinUrl: 'https://www.linkedin.com/in/sarah-forsythe-207a978a',
+      title: 'Cultural Perspective',
+      creator: 'Nagawa Lule',
+      duration: '3:42',
+      description: 'A beautiful cultural perspective from UK',
+      thumbnail: '/thumbnails/nagawa-lule.jpg',
+      videoUrl: 'https://www.youtube.com/embed/Oa-r4GSRSCQ',
+      linkedinUrl: 'https://www.linkedin.com/in/nagawa-l/',
       votes: votes[10] || 0
     },
     {
       id: 11,
+      title: 'Innovative Take',
+      creator: 'Mike Parker',
+      duration: '3:18',
+      description: 'An innovative take on the SHE IS AI message',
+      thumbnail: '/thumbnails/mike-parker.jpg',
+      videoUrl: 'https://www.youtube.com/embed/EWDPc9VVSUo',
+      linkedinUrl: 'https://www.linkedin.com/in/mikeparkerjr',
+      votes: votes[11] || 0
+    },
+    {
+      id: 12,
+      title: 'Dynamic Visual Story',
+      creator: 'Flame Rozario',
+      duration: '3:56',
+      description: 'A dynamic visual story from Singapore\'s top digital marketing creator',
+      thumbnail: '/thumbnails/flame-rozario.jpg',
+      videoUrl: 'https://www.youtube.com/embed/6R6wQDlu510',
+      linkedinUrl: 'https://sg.linkedin.com/in/flamerozario',
+      votes: votes[12] || 0
+    },
+    {
+      id: 13,
       title: 'SHE IS AI - Credits & Vision',
       creator: 'Tanushri Roy',
       duration: '3:21',
       description: 'Policy consultant\'s compelling visual story of the SHE IS AI mission',
       thumbnail: '/thumbnails/tanushri-roy.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
+      videoUrl: 'https://www.youtube.com/embed/iW9kYaEzH_8',
       linkedinUrl: 'https://in.linkedin.com/in/tanushri-roy-32a8bb54',
-      votes: votes[11] || 0
+      votes: votes[13] || 0
+    },
+    {
+      id: 14,
+      title: 'Cinematic Video Approach',
+      creator: 'Phillip Schein',
+      duration: '0:59',
+      description: 'A cinematic video approach with stunning visual storytelling',
+      thumbnail: '/thumbnails/phillip-schein-video.jpg',
+      videoUrl: 'https://www.youtube.com/embed/4vZEPgxipsE',
+      linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
+      votes: votes[14] || 0
+    },
+    {
+      id: 15,
+      title: 'Album Cover Artistry',
+      creator: 'Phillip Schein',
+      duration: null, // Image submission
+      description: 'Stunning album cover design showcasing futuristic AI-powered artistry',
+      thumbnail: '/thumbnails/phillip-schein-album.jpg',
+      imageUrl: '/images/phillip-schein-album-cover.jpg', // Image instead of video
+      linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
+      votes: votes[15] || 0,
+      isImage: true
+    },
+    {
+      id: 16,
+      title: 'Creative Director\'s Vision',
+      creator: 'Mohammad Dadmand',
+      duration: '4:05',
+      description: 'Creative Director & AI Design Specialist\'s interpretation',
+      thumbnail: '/thumbnails/mohammad-dadmand.jpg',
+      videoUrl: 'https://www.youtube.com/embed/sW1tyvlqj8Q',
+      linkedinUrl: 'https://www.linkedin.com/in/mohamaddadmand',
+      votes: votes[16] || 0
+    },
+    {
+      id: 17,
+      title: 'Professional Creative Expression',
+      creator: 'Stacy Scibetta',
+      duration: '3:30',
+      description: 'Professional creative\'s expressive interpretation of the SHE IS AI theme',
+      thumbnail: '/thumbnails/stacy-scibetta.jpg',
+      videoUrl: 'https://www.youtube.com/embed/94ZOoRGM-Nw',
+      linkedinUrl: 'https://www.linkedin.com/in/stacy-scibetta', // Update with actual LinkedIn
+      votes: votes[17] || 0
     }
   ];
 

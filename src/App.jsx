@@ -176,7 +176,7 @@ useEffect(() => {
       id: 10,
       title: 'Cultural Perspective',
       creator: 'Nagawa Lule',
-      duration: '3:42',
+      duration: '0:45',
       description: 'A beautiful cultural perspective from UK',
       thumbnail: '/thumbnails/nagawa-lule.jpg',
       videoUrl: 'https://www.youtube.com/embed/Oa-r4GSRSCQ',
@@ -222,7 +222,7 @@ useEffect(() => {
       creator: 'Phillip Schein',
       duration: '0:59',
       description: 'A cinematic video approach with stunning visual storytelling',
-      thumbnail: '/thumbnails/phillip-schein-video.jpg',
+      thumbnail: '/thumbnails/phillip-schein.jpg',
       videoUrl: 'https://www.youtube.com/embed/4vZEPgxipsE',
       linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
       votes: votes[14] || 0
@@ -234,7 +234,7 @@ useEffect(() => {
       duration: null, // Image submission
       description: 'Stunning album cover design showcasing futuristic AI-powered artistry',
       thumbnail: '/thumbnails/phillip-schein-album.jpg',
-      imageUrl: '/images/phillip-schein-album-cover.jpg', // Image instead of video
+      imageUrl: '/images/phillip-schein-art.png', // Image instead of video
       linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
       votes: votes[15] || 0,
       isImage: true
@@ -243,7 +243,7 @@ useEffect(() => {
       id: 16,
       title: 'Creative Director\'s Vision',
       creator: 'Mohammad Dadmand',
-      duration: '4:05',
+      duration: '0:41',
       description: 'Creative Director & AI Design Specialist\'s interpretation',
       thumbnail: '/thumbnails/mohammad-dadmand.jpg',
       videoUrl: 'https://www.youtube.com/embed/sW1tyvlqj8Q',

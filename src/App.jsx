@@ -244,8 +244,8 @@ useEffect(() => {
       creator: 'Phillip Schein',
       duration: null,
       description: 'Stunning album cover design showcasing futuristic AI-powered artistry',
-      thumbnail: '/thumbnails/phillip-schein-album.jpg',
-      imageUrl: '/images/phillip-schein-album-cover.jpg',
+      thumbnail: '/thumbnails/phillip-schein-art.png',
+      imageUrl: '/images/phillip-schein-album-cover.png',
       linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
       votes: votes[16] || 0,
       isImage: true

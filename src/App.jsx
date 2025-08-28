@@ -189,7 +189,7 @@ useEffect(() => {
       title: 'Cultural Perspective',
       creator: 'Nagawa Lule',
       duration: '0:45',
-      description: 'A beautiful cultural perspective from UK',
+      description: 'A beautiful cross-cultural perspective from London',
       thumbnail: '/thumbnails/ngawai-lule.jpg',
       videoUrl: 'https://www.youtube.com/embed/Oa-r4GSRSCQ',
       linkedinUrl: 'https://www.linkedin.com/in/nagawa-l/',

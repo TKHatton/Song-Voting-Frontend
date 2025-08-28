@@ -233,7 +233,7 @@ useEffect(() => {
       creator: 'Phillip Schein',
       duration: '0:59',
       description: 'A cinematic video approach with stunning visual storytelling',
-      thumbnail: '/thumbnails/phillip-schein-video.jpg',
+      thumbnail: '/thumbnails/phillip-schein.jpg',
       videoUrl: 'https://www.youtube.com/embed/4vZEPgxipsE',
       linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
       votes: votes[15] || 0

@@ -73,174 +73,18 @@ useEffect(() => {
   const videoSubmissions = [
     {
       id: 1,
-      title: 'Inspiring Visual Story',
+      title: 'Inspiring Visual Style',
       creator: 'Hellena Banner',
       duration: '0:15',
       description: 'Creative professional\'s inspiring style showcase - alternative work sample as original entry was lost',
       thumbnail: '/thumbnails/hellena-banner.jpg',
-      videoUrl: 'https://www.youtube.com/embed/SPvte1f4zc8', // Alternative work sample
+      videoUrl: 'https://www.youtube.com/embed/SPvte1f4zc8',
       linkedinUrl: 'https://www.linkedin.com/in/hellena-banner', // Update with actual LinkedIn
       votes: votes[1] || 0,
-      isAlternative: true // Flag to show this is alternative content
+      isAlternative: true
     },
     {
       id: 2,
-      title: 'Dynamic Creative Expression',
-      creator: 'Barbara Estebaranz',
-      duration: '0:59',
-      description: 'Creative professional\'s dynamic interpretation of the SHE IS AI theme',
-      thumbnail: '/thumbnails/barbara-estebaranz.jpg',
-      videoUrl: 'https://www.youtube.com/embed/XCyFLdvlyUg',
-      linkedinUrl: 'https://www.linkedin.com/in/barbara-estebaranz', // Update with actual LinkedIn
-      votes: votes[2] || 0
-    },
-    {
-      id: 3,
-      title: 'Sustainable Fashion Vision',
-      creator: 'Sarah Forsythe',
-      duration: '3:33',
-      description: 'Sustainable fashion professional\'s inspiring interpretation',
-      thumbnail: '/thumbnails/sarah-forsythe.jpg',
-      videoUrl: 'https://www.youtube.com/embed/m1v0-qjQSWU',
-      linkedinUrl: 'https://www.linkedin.com/in/sarah-forsythe-207a978a',
-      votes: votes[3] || 0
-    },
-    {
-      id: 4,
-      title: 'AI Video & Digital Storytelling',
-      creator: 'Angela Fraser',
-      duration: '4:12',
-      description: 'AI Video, Fashion & Digital Storytelling interpretation',
-      thumbnail: '/thumbnails/angela-fraser.jpg',
-      videoUrl: 'https://www.youtube.com/embed/Q0Ow-m7P_pA',
-      linkedinUrl: 'https://www.linkedin.com/in/angela-fraser',
-      votes: votes[4] || 0
-    },
-    {
-      id: 5,
-      title: 'Celebration of Diversity',
-      creator: 'Rubbia Hussain',
-      duration: '0:59',
-      description: 'AI content innovator\'s vibrant celebration of diversity in AI',
-      thumbnail: '/thumbnails/rubbia-hussain.jpg',
-      videoUrl: 'https://www.youtube.com/embed/58q5ObMsamM',
-      linkedinUrl: 'https://www.linkedin.com/in/rubbia-hussain',
-      votes: votes[5] || 0
-    },
-    {
-      id: 6,
-      title: 'AI-Powered Creative Vision',
-      creator: 'May Kaneko',
-      duration: null, // Image submission
-      description: 'Stunning visual interpretation of the SHE IS AI theme through digital artistry',
-      thumbnail: '/thumbnails/may-kaneko.jpg',
-      imageUrl: '/images/may-kaneko-submission.jpg', // Image instead of video
-      linkedinUrl: 'https://www.linkedin.com/in/may-kaneko', // Update with actual LinkedIn
-      votes: votes[6] || 0,
-      isImage: true
-    },
-    {
-      id: 7,
-      title: 'Creative Interpretation',
-      creator: 'Alice Kranaviter',
-      duration: '0:59',
-      description: 'A creative interpretation of the SHE IS AI theme song',
-      thumbnail: '/thumbnails/alice-kranaviter.jpg',
-      videoUrl: 'https://www.youtube.com/embed/Og014KfobTs',
-      linkedinUrl: 'https://it.linkedin.com/in/alice-kranaviter-7390b946',
-      votes: votes[7] || 0
-    },
-    {
-      id: 8,
-      title: 'Empowering Narrative',
-      creator: 'Rachel Lavern',
-      duration: '3:15',
-      description: 'Business optimization expert\'s empowering visual narrative',
-      thumbnail: '/thumbnails/rachel-lavern.jpg',
-      videoUrl: 'https://www.youtube.com/embed/f0GBaDV9PLo',
-      linkedinUrl: 'https://www.linkedin.com/in/rachellavern',
-      votes: votes[8] || 0
-    },
-    {
-      id: 9,
-      title: 'Innovative Creative Vision',
-      creator: 'Julia Lewis',
-      duration: '3:18',
-      description: 'Innovative creative professional\'s unique take on the SHE IS AI message',
-      thumbnail: '/thumbnails/julia-lewis.jpg',
-      videoUrl: 'https://www.youtube.com/embed/sqIBbhjPf0E',
-      linkedinUrl: 'https://www.linkedin.com/in/julia-lewis', // Update with actual LinkedIn
-      votes: votes[9] || 0
-    },
-    {
-      id: 10,
-      title: 'Cultural Perspective',
-      creator: 'Nagawa Lule',
-      duration: '0:45',
-      description: 'A beautiful cultural perspective from UK',
-      thumbnail: '/thumbnails/nagawa-lule.jpg',
-      videoUrl: 'https://www.youtube.com/embed/Oa-r4GSRSCQ',
-      linkedinUrl: 'https://www.linkedin.com/in/nagawa-l/',
-      votes: votes[10] || 0
-    },
-    {
-      id: 11,
-      title: 'Innovative Take',
-      creator: 'Mike Parker',
-      duration: '3:18',
-      description: 'An innovative take on the SHE IS AI message',
-      thumbnail: '/thumbnails/mike-parker.jpg',
-      videoUrl: 'https://www.youtube.com/embed/EWDPc9VVSUo',
-      linkedinUrl: 'https://www.linkedin.com/in/mikeparkerjr',
-      votes: votes[11] || 0
-    },
-    {
-      id: 12,
-      title: 'Dynamic Visual Story',
-      creator: 'Flame Rozario',
-      duration: '3:56',
-      description: 'A dynamic visual story from Singapore\'s top digital marketing creator',
-      thumbnail: '/thumbnails/flame-rozario.jpg',
-      videoUrl: 'https://www.youtube.com/embed/6R6wQDlu510',
-      linkedinUrl: 'https://sg.linkedin.com/in/flamerozario',
-      votes: votes[12] || 0
-    },
-    {
-      id: 13,
-      title: 'SHE IS AI - Credits & Vision',
-      creator: 'Tanushri Roy',
-      duration: '3:21',
-      description: 'Policy consultant\'s compelling visual story of the SHE IS AI mission',
-      thumbnail: '/thumbnails/tanushri-roy.jpg',
-      videoUrl: 'https://www.youtube.com/embed/iW9kYaEzH_8',
-      linkedinUrl: 'https://in.linkedin.com/in/tanushri-roy-32a8bb54',
-      votes: votes[13] || 0
-    },
-    {
-      id: 14,
-      title: 'Cinematic Video Approach',
-      creator: 'Phillip Schein',
-      duration: '0:59',
-      description: 'A cinematic video approach with stunning visual storytelling',
-      thumbnail: '/thumbnails/phillip-schein.jpg',
-      videoUrl: 'https://www.youtube.com/embed/4vZEPgxipsE',
-      linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
-      votes: votes[14] || 0
-    },
-    {
-      id: 15,
-      title: 'Album Cover Artistry',
-      creator: 'Phillip Schein',
-      duration: null, // Image submission
-      description: 'Stunning album cover design showcasing futuristic AI-powered artistry',
-      thumbnail: '/thumbnails/phillip-schein-album.jpg',
-      imageUrl: '/images/phillip-schein-art.png', // Image instead of video
-      linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
-      votes: votes[15] || 0,
-      isImage: true
-    },
-    {
-      id: 16,
       title: 'Creative Director\'s Vision',
       creator: 'Mohammad Dadmand',
       duration: '0:41',
@@ -248,7 +92,163 @@ useEffect(() => {
       thumbnail: '/thumbnails/mohammad-dadmand.jpg',
       videoUrl: 'https://www.youtube.com/embed/sW1tyvlqj8Q',
       linkedinUrl: 'https://www.linkedin.com/in/mohamaddadmand',
-      votes: votes[16] || 0
+      votes: votes[2] || 0
+    },
+    {
+      id: 3,
+      title: 'Dynamic Creative Expression',
+      creator: 'Barbara Estebaranz',
+      duration: '0:59',
+      description: 'Creative professional\'s dynamic interpretation of the SHE IS AI theme',
+      thumbnail: '/thumbnails/barbara-estebaranz.jpg',
+      videoUrl: 'https://www.youtube.com/embed/XCyFLdvlyUg',
+      linkedinUrl: 'https://www.linkedin.com/in/barbara-estebaranz', // Update with actual LinkedIn
+      votes: votes[3] || 0
+    },
+    {
+      id: 4,
+      title: 'Sustainable Fashion Vision',
+      creator: 'Sarah Forsythe',
+      duration: '3:33',
+      description: 'Sustainable fashion professional\'s inspiring interpretation',
+      thumbnail: '/thumbnails/sarah-forsythe.jpg',
+      videoUrl: 'https://www.youtube.com/embed/m1v0-qjQSWU',
+      linkedinUrl: 'https://www.linkedin.com/in/sarah-forsythe-207a978a',
+      votes: votes[4] || 0
+    },
+    {
+      id: 5,
+      title: 'AI Video & Digital Storytelling',
+      creator: 'Angela Fraser',
+      duration: '3:38',
+      description: 'AI Video, Fashion & Digital Storytelling interpretation',
+      thumbnail: '/thumbnails/angela-fraser.jpg',
+      videoUrl: 'https://www.youtube.com/embed/Q0Ow-m7P_pA',
+      linkedinUrl: 'https://www.linkedin.com/in/angela-fraser',
+      votes: votes[5] || 0
+    },
+    {
+      id: 6,
+      title: 'Celebration of Diversity',
+      creator: 'Rubbia Hussain',
+      duration: '0:59',
+      description: 'AI content innovator\'s vibrant celebration of diversity in AI',
+      thumbnail: '/thumbnails/rubbia-hussain.jpg',
+      videoUrl: 'https://www.youtube.com/embed/58q5ObMsamM',
+      linkedinUrl: 'https://www.linkedin.com/in/rubbia-hussain',
+      votes: votes[6] || 0
+    },
+    {
+      id: 7,
+      title: 'AI-Powered Visual Artistry',
+      creator: 'May Kaneko',
+      duration: null,
+      description: 'Stunning visual interpretation of the SHE IS AI theme through digital artistry',
+      thumbnail: '/thumbnails/may-kaneko.jpg',
+      imageUrl: '/images/may-kaneko-submission.jpg',
+      linkedinUrl: 'https://www.linkedin.com/in/may-kaneko', // Update with actual LinkedIn
+      votes: votes[7] || 0,
+      isImage: true
+    },
+    {
+      id: 8,
+      title: 'Creative Interpretation',
+      creator: 'Alice Kranaviter',
+      duration: '0:15',
+      description: 'A creative interpretation of the SHE IS AI theme song',
+      thumbnail: '/thumbnails/alice-kranaviter.jpg',
+      videoUrl: 'https://www.youtube.com/embed/Og014KfobTs',
+      linkedinUrl: 'https://it.linkedin.com/in/alice-kranaviter-7390b946',
+      votes: votes[8] || 0
+    },
+    {
+      id: 9,
+      title: 'Empowering Narrative',
+      creator: 'Rachel Lavern',
+      duration: '3:15',
+      description: 'Business optimization expert\'s empowering visual narrative',
+      thumbnail: '/thumbnails/rachel-lavern.jpg',
+      videoUrl: 'https://www.youtube.com/embed/f0GBaDV9PLo',
+      linkedinUrl: 'https://www.linkedin.com/in/rachellavern',
+      votes: votes[9] || 0
+    },
+    {
+      id: 10,
+      title: 'Innovative Creative Vision',
+      creator: 'Julia Lewis',
+      duration: '3:18',
+      description: 'Innovative creative professional\'s unique take on the SHE IS AI message',
+      thumbnail: '/thumbnails/julia-lewis.png',
+      videoUrl: 'https://www.youtube.com/embed/sqIBbhjPf0E',
+      linkedinUrl: 'https://www.linkedin.com/in/julia-lewis', // Update with actual LinkedIn
+      votes: votes[10] || 0
+    },
+    {
+      id: 11,
+      title: 'Cultural Perspective',
+      creator: 'Nagawa Lule',
+      duration: '0:45',
+      description: 'A beautiful cultural perspective from UK',
+      thumbnail: '/thumbnails/nagawa-lule.jpg',
+      videoUrl: 'https://www.youtube.com/embed/Oa-r4GSRSCQ',
+      linkedinUrl: 'https://www.linkedin.com/in/nagawa-l/',
+      votes: votes[11] || 0
+    },
+    {
+      id: 12,
+      title: 'Innovative Take',
+      creator: 'Mike Parker',
+      duration: '1:30',
+      description: 'An innovative take on the SHE IS AI message',
+      thumbnail: '/thumbnails/mike-parker.jpg',
+      videoUrl: 'https://www.youtube.com/embed/EWDPc9VVSUo',
+      linkedinUrl: 'https://www.linkedin.com/in/mikeparkerjr',
+      votes: votes[12] || 0
+    },
+    {
+      id: 13,
+      title: 'Dynamic Visual Story',
+      creator: 'Flame Rozario',
+      duration: '0:32',
+      description: 'A dynamic visual story from Singapore\'s top digital marketing creator',
+      thumbnail: '/thumbnails/flame-rozario.jpg',
+      videoUrl: 'https://www.youtube.com/embed/6R6wQDlu510',
+      linkedinUrl: 'https://sg.linkedin.com/in/flamerozario',
+      votes: votes[13] || 0
+    },
+    {
+      id: 14,
+      title: 'SHE IS AI - Credits & Vision',
+      creator: 'Tanushri Roy',
+      duration: '2:25',
+      description: 'Policy consultant\'s compelling visual story of the SHE IS AI mission',
+      thumbnail: '/thumbnails/tanushri-roy.jpg',
+      videoUrl: 'https://www.youtube.com/embed/iW9kYaEzH_8',
+      linkedinUrl: 'https://in.linkedin.com/in/tanushri-roy-32a8bb54',
+      votes: votes[14] || 0
+    },
+    {
+      id: 15,
+      title: 'Cinematic Video Approach',
+      creator: 'Phillip Schein',
+      duration: '0:59',
+      description: 'A cinematic video approach with stunning visual storytelling',
+      thumbnail: '/thumbnails/phillip-schein-video.jpg',
+      videoUrl: 'https://www.youtube.com/embed/4vZEPgxipsE',
+      linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
+      votes: votes[15] || 0
+    },
+    {
+      id: 16,
+      title: 'Album Cover Artistry',
+      creator: 'Phillip Schein',
+      duration: null,
+      description: 'Stunning album cover design showcasing futuristic AI-powered artistry',
+      thumbnail: '/thumbnails/phillip-schein-album.jpg',
+      imageUrl: '/images/phillip-schein-album-cover.jpg',
+      linkedinUrl: 'https://www.linkedin.com/in/phillipschein',
+      votes: votes[16] || 0,
+      isImage: true
     },
     {
       id: 17,
@@ -256,12 +256,89 @@ useEffect(() => {
       creator: 'Stacy Scibetta',
       duration: '3:30',
       description: 'Professional creative\'s expressive interpretation of the SHE IS AI theme',
-      thumbnail: '/thumbnails/stacy-scibetta.jpg',
+      thumbnail: '/thumbnails/stacy-scibetta.png',
       videoUrl: 'https://www.youtube.com/embed/94ZOoRGM-Nw',
       linkedinUrl: 'https://www.linkedin.com/in/stacy-scibetta', // Update with actual LinkedIn
       votes: votes[17] || 0
     }
   ];
+
+  // Enhanced rendering function to properly handle images vs videos
+  const renderSubmissionCard = (submission) => (
+    <div key={submission.id} className="video-card">
+      <div className="relative">
+        <img 
+          src={submission.thumbnail} 
+          alt={submission.title}
+          className="video-thumbnail"
+          onError={(e) => {
+            e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzMzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNvbWluZyBTb29uPC90ZXh0Pjwvc3ZnPg==';
+          }}
+        />
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+          <button 
+            onClick={() => submission.isImage ? openImage(submission) : openVideo(submission)}
+            className="bg-red-600 hover:bg-red-700 text-white rounded-full p-3 transition-colors"
+          >
+            {submission.isImage ? (
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd"/>
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+              </svg>
+            )}
+          </button>
+        </div>
+        {/* Only show duration for videos, not images */}
+        {submission.duration && !submission.isImage && (
+          <div className="absolute bottom-4 right-4">
+            <span className="bg-black/70 text-white px-2 py-1 text-sm rounded">{submission.duration}</span>
+          </div>
+        )}
+        {/* Show IMAGE badge for image submissions */}
+        {submission.isImage && (
+          <div className="absolute top-4 left-4">
+            <span className="bg-purple-600 text-white px-2 py-1 text-sm font-semibold rounded">ARTWORK</span>
+          </div>
+        )}
+        {/* Show STYLE SAMPLE badge for alternative content */}
+        {submission.isAlternative && (
+          <div className="absolute top-4 left-4">
+            <span className="bg-orange-600 text-white px-2 py-1 text-sm font-semibold rounded">STYLE SAMPLE</span>
+          </div>
+        )}
+      </div>
+      <div className="p-4">
+        <h3 className="text-lg font-bold mb-2">{submission.title}</h3>
+        <p className="text-gray-300 mb-2">
+          by <a href={submission.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:underline">{submission.creator}</a>
+        </p>
+        <p className="text-gray-400 text-sm mb-4">{submission.description}</p>
+        
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-yellow-400 font-semibold">{submission.votes} votes</span>
+        </div>
+        
+        <div className="flex space-x-2">
+          <button 
+            onClick={() => handleVote(submission.id)}
+            className="flex-1 vote-button"
+            disabled={hasVoted}
+          >
+            VOTE NOW
+          </button>
+          <button 
+            onClick={() => handleShare(submission)}
+            className="share-button"
+          >
+            Share
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 
   const totalVotes = Object.values(votes).reduce((sum, count) => sum + count, 0);
 

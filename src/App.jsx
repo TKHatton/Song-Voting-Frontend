@@ -78,7 +78,7 @@ useEffect(() => {
       duration: '3:24',
       description: 'A creative interpretation of the SHE IS AI theme song',
       thumbnail: '/thumbnails/alice-kranaviter.jpg',
-      videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // Replace with actual embed
+      videoUrl: 'https://www.youtube.com/embed/Og014KfobTs', // Replace with actual embed
       linkedinUrl: 'https://it.linkedin.com/in/alice-kranaviter-7390b946',
       votes: votes[1] || 0
     },

@@ -409,7 +409,7 @@ fetch(`${API_BASE}/vote`, {
       alert('Network error. Please try again.');
       setShowVotingModal(false);
     } finally {
-    setIsVoting(false);
+      setIsVoting(false);
     }
   };
 

@@ -869,6 +869,12 @@ const Navigation = () => (
         <div className="modal-overlay">
           <div className="modal-content">
             <h3 className="text-xl font-bold mb-4">Confirm Your Vote</h3>
+            {error && (
+              <div className="bg-red-600 text-white p-3 rounded mb-4 text-sm">
+                {error}
+              </div>
+            )}
+
             <p className="text-gray-300 mb-6">
               You're about to vote for "{videoSubmissions.find(v => v.id === selectedVideo)?.title}". 
               Make sure you're logged into your social media accounts for the best experience.
@@ -880,7 +886,7 @@ const Navigation = () => (
                 disabled={isVoting}
                 className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
                   isVoting
-                    ? 'bg-gray-400-text-gray-700 cursor-not-allowed'
+                    ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
                     : 'bg-yellow-400 hover:bg-yellow-500 text-black'
                 }'}
               >
@@ -903,11 +909,6 @@ const Navigation = () => (
           <div className="bg-black rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
             <div className="flex justify-between items-center p-4 border-b border-gray-800">
               <h3 className="text-xl font-bold">{videoModal.video?.title}</h3>
-              {error &&(
-                <div className="bg-red-600 text-white p-3 rounded mb-4 text-sm">
-                  {error}
-                </div>
-              )}
               <button
                 onClick={closeVideo}
                 className="text-gray-400 hover:text-white text-2xl"
@@ -941,8 +942,7 @@ const Navigation = () => (
         <div className="modal-overlay">
           <div className="bg-black rounded-lg max-w-6xl w-full max-h-[90vh] overflow-hidden relative">
             <div className="flex justify-between items-center p-4 border-b border-gray-800">
-              <h3 className="text-xl font-bold">
-      {imageModal.image?.title}</h3>
+              <h3 className="text-xl font-bold">{imageModal.image?.title}</h3>
               <button 
                 onClick={closeImage}
                 className="text-gray-400 hover:text-white text-2xl"

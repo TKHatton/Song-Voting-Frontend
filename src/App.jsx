@@ -403,11 +403,13 @@ fetch(`${API_BASE}/vote`, {
         alert(data.error || 'Failed to submit vote');
       }
       setShowVotingModal(false);
-    }
-  } catch (error) {
+      
+    } catch (error) {
     console.error('Error submitting vote:', error);
     alert('Network error. Please try again.');
     setShowVotingModal(false);
+  } finally {
+    setIsVoting(false);
   }
 };
 

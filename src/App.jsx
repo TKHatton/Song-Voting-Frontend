@@ -660,15 +660,15 @@ const Navigation = () => (
         </div>
       </section>
 
-      {/* Featured Original Video */}
+      {/* How it works Video */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              FEATURED <span className="text-yellow-400">ORIGINAL</span>
+              HOW IT <span className="text-yellow-400">WORKS</span>
             </h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              The original SHE IS AI theme song by Lenise Kenney that inspired this amazing competition
+              Learn how to participate in the SHE IS AI theme song competition - all rules and voting details explained in this video
             </p>
           </div>
 
@@ -694,7 +694,7 @@ const Navigation = () => (
                   </button>
                 </div>
                 <div className="absolute top-4 left-4">
-                  <span className="bg-red-600 text-white px-2 py-1 text-sm font-semibold rounded">ORIGINAL</span>
+                  <span className="bg-red-600 text-white px-2 py-1 text-sm font-semibold rounded">START HERE</span>
                 </div>
                 <div className="absolute bottom-4 right-4">
                   <span className="bg-black/70 text-white px-2 py-1 text-sm rounded">{featuredVideo.duration}</span>
@@ -702,9 +702,6 @@ const Navigation = () => (
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{featuredVideo.title}</h3>
-                <p className="text-gray-300 mb-2">
-                  by <a href={featuredVideo.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:underline">{featuredVideo.creator}</a>
-                </p>
                 <p className="text-gray-400 text-sm">{featuredVideo.description}</p>
               </div>
             </div>

@@ -375,8 +375,7 @@ const handleVote = (videoId) => {
     setError(null);
 
     try {
-    const response = await 
-fetch(`${API_BASE}/vote`, {
+    const response = await fetch(`${API_BASE}/vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -67,7 +67,7 @@ const featuredVideo = {
   duration: '0:27',
   description: 'This essential guide covers everything you need to know: the 14-day timeline, daily voting rules, and how to make your voice count. Vote today and come back tomorrow to vote again!',
   thumbnail: '/thumbnails/main-video.jpeg',
-  videoUrl: 'https://www.youtube.com/embed/SLoYUO0leqg'
+  videoUrl: 'https://www.youtube.com/embed/__S7hZGlbBU'
 };
 
   // Competition video submissions (organized alphabetically by last name)

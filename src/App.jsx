@@ -60,17 +60,15 @@ useEffect(() => {
     return () => clearInterval(timer);
   }, []);
 
-  // Featured video (original)
-  const featuredVideo = {
-    id: 'featured',
-    title: 'We Rewrite the Light - Original Theme Song',
-    creator: 'Lenise Kenney',
-    duration: '0:27',
-    description: 'The original SHE IS AI theme song that inspired this competition',
-    thumbnail: '/thumbnails/lenise-kenney.jpeg',
-    videoUrl: 'https://www.youtube.com/embed/SLoYUO0leqg', // Replace with actual embed
-    linkedinUrl: 'https://www.linkedin.com/in/lenise-kenney'
-  };
+  // Featured video (explainer)
+const featuredVideo = {
+  id: 'HOW IT WORKS',
+  title: 'Voting Rules & How to Participate',
+  duration: '0:27',
+  description: 'This essential guide covers everything you need to know: the 14-day timeline, daily voting rules, and how to make your voice count. Vote today and come back tomorrow to vote again!',
+  thumbnail: '/thumbnails/lenise-kenney.jpeg',
+  videoUrl: 'https://www.youtube.com/embed/SLoYUO0leqg'
+};
 
   // Competition video submissions (organized alphabetically by last name)
   const videoSubmissions = [

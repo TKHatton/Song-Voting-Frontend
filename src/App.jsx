@@ -82,7 +82,7 @@ useEffect(() => {
       description: 'Creative professional\'s inspiring style showcase - alternative work sample as original entry was lost',
       thumbnail: '/thumbnails/hellena-banner.png',
       videoUrl: 'https://www.youtube.com/embed/SPvte1f4zc8',
-      linkedinUrl: 'https://www.linkedin.com/in/hellena-banner', // Update with actual LinkedIn
+      linkedinUrl: 'https://www.linkedin.com/in/hellena-b-254ab0302', // Update with actual LinkedIn
       votes: votes[1] || 0,
       isAlternative: true
     },
@@ -105,7 +105,7 @@ useEffect(() => {
       description: 'Creative professional\'s dynamic interpretation of the SHE IS AI theme',
       thumbnail: '/thumbnails/barbara-estebaranz.png',
       videoUrl: 'https://www.youtube.com/embed/XCyFLdvlyUg',
-      linkedinUrl: 'https://www.linkedin.com/in/barbara-estebaranz', // Update with actual LinkedIn
+      linkedinUrl: 'https://www.linkedin.com/in/barbtechcreative', // Update with actual LinkedIn
       votes: votes[3] || 0
     },
     {
@@ -116,7 +116,7 @@ useEffect(() => {
       description: 'Sustainable fashion professional\'s inspiring interpretation',
       thumbnail: '/thumbnails/sarah-forsythe.jpg',
       videoUrl: 'https://www.youtube.com/embed/m1v0-qjQSWU',
-      linkedinUrl: 'https://www.linkedin.com/in/sarah-forsythe-207a978a',
+      linkedinUrl: 'https://www.linkedin.com/in/sarahcatherinejewelry',
       votes: votes[4] || 0
     },
     {
@@ -138,7 +138,7 @@ useEffect(() => {
       description: 'AI content innovator\'s vibrant celebration of diversity in AI',
       thumbnail: '/thumbnails/rubbia-hussain.jpg',
       videoUrl: 'https://www.youtube.com/embed/58q5ObMsamM',
-      linkedinUrl: 'https://www.linkedin.com/in/rubbia-hussain',
+      linkedinUrl: 'https://www.linkedin.com/in/rubbia-h-3b36bb232',
       votes: votes[6] || 0
     },
     {
@@ -149,7 +149,7 @@ useEffect(() => {
       description: 'Stunning visual interpretation of the SHE IS AI theme through digital artistry',
       thumbnail: '/thumbnails/may-kaneko.jpg',
       imageUrl: '/images/may-kaneko-submission.jpg',
-      linkedinUrl: 'https://www.linkedin.com/in/may-kaneko', // Update with actual LinkedIn
+      linkedinUrl: 'https://www.linkedin.com/in/maykaneko', // Update with actual LinkedIn
       votes: votes[7] || 0,
       isImage: true
     },
@@ -205,7 +205,7 @@ useEffect(() => {
       description: 'An innovative take on the SHE IS AI message',
       thumbnail: '/thumbnails/mike-parker.jpg',
       videoUrl: 'https://www.youtube.com/embed/EWDPc9VVSUo',
-      linkedinUrl: 'https://www.linkedin.com/in/mikeparkerjr',
+      linkedinUrl: 'https://www.linkedin.com/in/mikeparkerai',
       votes: votes[12] || 0
     },
     {
@@ -227,7 +227,7 @@ useEffect(() => {
       description: 'Policy consultant\'s compelling visual story of the SHE IS AI mission',
       thumbnail: '/thumbnails/tanushri-roy.jpg',
       videoUrl: 'https://www.youtube.com/embed/iW9kYaEzH_8',
-      linkedinUrl: 'https://in.linkedin.com/in/tanushri-roy-32a8bb54',
+      linkedinUrl: 'https://in.linkedin.com/in/tanushriroy',
       votes: votes[14] || 0
     },
     {
@@ -261,7 +261,7 @@ useEffect(() => {
       description: 'Professional creative\'s expressive interpretation of the SHE IS AI theme',
       thumbnail: '/thumbnails/stacy-scibetta.png',
       videoUrl: 'https://www.youtube.com/embed/94ZOoRGM-Nw',
-      linkedinUrl: 'https://www.linkedin.com/in/stacy-scibetta', // Update with actual LinkedIn
+      linkedinUrl: 'https://www.linkedin.com/in/stacyscibetta', // Update with actual LinkedIn
       votes: votes[17] || 0
     }
   ];

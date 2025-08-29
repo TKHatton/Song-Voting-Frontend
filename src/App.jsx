@@ -78,7 +78,7 @@ const featuredVideo = {
       creator: 'Hellena Banner',
       duration: '1:53',
       description: 'Creative professional\'s inspiring style showcase - alternative work sample as original entry was lost',
-      thumbnail: '/thumbnails/hellena-banner.png',
+      thumbnail: '/thumbnails/hellena-banner2.png',
       videoUrl: 'https://www.youtube.com/embed/SPvte1f4zc8',
       linkedinUrl: 'https://www.linkedin.com/in/hellena-b-254ab0302', // Update with actual LinkedIn
       votes: votes[1] || 0,

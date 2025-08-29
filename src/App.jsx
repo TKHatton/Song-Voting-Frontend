@@ -65,10 +65,10 @@ useEffect(() => {
     id: 'featured',
     title: 'We Rewrite the Light - Original Theme Song',
     creator: 'Lenise Kenney',
-    duration: '3:45',
+    duration: '0:27',
     description: 'The original SHE IS AI theme song that inspired this competition',
     thumbnail: '/thumbnails/lenise-kenney.jpeg',
-    videoUrl: 'https://www.youtube.com/embed/999LBsnovg8', // Replace with actual embed
+    videoUrl: 'https://www.youtube.com/embed/SLoYUO0leqg', // Replace with actual embed
     linkedinUrl: 'https://www.linkedin.com/in/lenise-kenney'
   };
 

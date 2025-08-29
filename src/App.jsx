@@ -888,7 +888,8 @@ const Navigation = () => (
                   isVoting
                     ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
                     : 'bg-yellow-400 hover:bg-yellow-500 text-black'
-                }'}
+            }`}
+
               >
                 {isVoting ? 'SUBMITTING...' : 'Complete Vote'}
               </button>

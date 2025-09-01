@@ -126,6 +126,41 @@ body {
   min-height: 100vh;
 }
 
+/* Consistent section spacing */
+.section-padding {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* For larger screens, use slightly more padding but keep it controlled */
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Prevent excessive spacing on very large screens */
+@media (min-width: 1440px) {
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Fix hero section height limits */
+.hero-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+  min-height: 100vh;
+  max-height: 120vh; /* ADD THIS LINE */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Navigation fix for single row */
 .nav-container {
   display: flex;

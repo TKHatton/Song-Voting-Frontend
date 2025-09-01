@@ -16,15 +16,66 @@ body {
 /* Navigation Styles */
 .nav-link {
   color: white;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.025em;
   transition: color 0.2s;
+  white-space:nowrap;
 }
 
 .nav-link:hover {
   color: #f59e0b;
+}
+
+/* Navigation container - prevent wrapping and stacking */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 4rem; /* Fixed height */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Consistent small gap */
+  flex-wrap: nowrap; /* Prevent wrapping to new line */
+  overflow-x: auto; /* Allow horizontal scroll if needed */
+}
+
+/* Logo styling - keep consistent */
+.nav-logo {
+  height: 2rem;
+  width: auto;
+  flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+/* Remove all responsive changes that cause stacking */
+@media (min-width: 1024px) {
+  .nav-links {
+    gap: 0.75rem; /* Slightly more space on larger screens */
+  }
+  
+  .nav-link {
+    font-size: 0.75rem; /* Keep font small even on large screens */
+    padding: 0.25rem 0.75rem;
+  }
+}
+
+/* For very large screens - prevent excessive scaling */
+@media (min-width: 1440px) {
+  .nav-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.75rem; /* Keep consistent small font */
+  }
 }
 
 /* Button Styles */

@@ -179,8 +179,8 @@ body {
 
 /* Consistent section spacing */
 .section-padding {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 /* For larger screens, use slightly more padding but keep it controlled */
@@ -194,8 +194,8 @@ body {
 /* Prevent excessive spacing on very large screens */
 @media (min-width: 1440px) {
   .section-padding {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
@@ -231,18 +231,6 @@ body {
 @media (min-width: 1024px) {
   .nav-links {
     gap: 1rem;
-  }
-}
-
-/* Responsive navigation */
-@media (max-width: 1024px) {
-  .nav-links {
-    gap: 0.25rem;
-  }
-  
-  .nav-link {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
   }
 }
 

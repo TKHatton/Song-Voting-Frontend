@@ -427,7 +427,35 @@ const handleVote = (videoId) => {
     }
   };
 
-  // Navigation component - White text, thin font, right-leaning distribution
+  // Navigation component - Full width distribution like main site
+const Navigation = () => (
+  <nav className="bg-black border-b border-gray-800">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="h-16 flex items-center justify-between">
+        
+        {/* Logo */}
+        <a href="https://sheisai.ai" className="flex-shrink-0">
+          <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
+        </a>
+
+        {/* Desktop Navigation - Full width spread */}
+        <div className="hidden md:flex items-center flex-1 justify-center ml-8">
+          <div className="flex items-center justify-between w-full max-w-4xl">
+            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
+            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/magazine">MAGAZINE</a>
+            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
+            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/xpert-agency">AGENCY</a>
+            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
+            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
+            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/about">ABOUT</a>
+            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/contact-us">CONTACT</a>
+          </div>
+        </div>
+
+        {/* CTA Button - Far right */}
+        <a
+          href="https://sheisai.ai/become-a-member"
+          className="hidden md:inline-flex items-center rounde// Navigation component - White text, thin font, right-leaning distribution
 const Navigation = () => (
   <nav className="bg-black border-b border-gray-800">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

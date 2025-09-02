@@ -431,41 +431,42 @@ const handleVote = (videoId) => {
 const Navigation = () => (
   <nav className="bg-black/90 border-b border-gray-800">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="h-16 flex items-center gap-4">
-        {/* logo */}
+      <div className="h-16 flex items-center justify-between">
+        {/* logo - left side */}
         <a href="https://sheisai.ai" className="flex items-center flex-shrink-0">
           <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
         </a>
 
-        {/* center links - show on medium screens and up, with smaller text on medium */}
-        <ul className="hidden md:flex flex-1 justify-center items-center gap-4 lg:gap-6 xl:gap-8 uppercase tracking-wider text-[11px] lg:text-[12px] xl:text-[13px] font-semibold">
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/magazine">MAGAZINE</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/xpert-agency">AGENCY</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/she-is-ai-news">NEWS</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/about">ABOUT</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/contact-us">CONTACT</a></li>
-        </ul>
+        {/* center and right content */}
+        <div className="flex items-center justify-end flex-1 ml-4">
+          {/* center links - desktop */}
+          <ul className="hidden lg:flex items-center gap-6 uppercase tracking-wider text-xs font-semibold mr-8">
+            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a></li>
+            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/magazine">MAGAZINE</a></li>
+            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a></li>
+            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/xpert-agency">AGENCY</a></li>
+            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a></li>
+            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/she-is-ai-news">NEWS</a></li>
+            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/about">ABOUT</a></li>
+            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/contact-us">CONTACT</a></li>
+          </ul>
 
-        {/* Mobile menu links - simplified version for smaller screens */}
-        <ul className="flex md:hidden flex-1 justify-center items-center gap-2 uppercase tracking-wider text-[10px] font-semibold overflow-x-auto">
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap px-1" href="https://sheisai.ai/ai-fashion-awards">AWARDS</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap px-1" href="https://sheisai.ai/magazine">MAG</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap px-1" href="https://sheisai.ai/she-is-ai-community">5P</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap px-1" href="https://sheisai.ai/xpert-agency">AGENCY</a></li>
-          <li><a className="text-white/80 hover:text-white transition whitespace-nowrap px-1" href="https://sheisai.ai/about">ABOUT</a></li>
-        </ul>
+          {/* Mobile menu - simplified */}
+          <ul className="flex lg:hidden items-center gap-3 uppercase tracking-wider text-xs font-semibold mr-4">
+            <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/magazine">MAG</a></li>
+            <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/about">ABOUT</a></li>
+            <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/contact-us">CONTACT</a></li>
+          </ul>
 
-        {/* pill CTA on the right */}
-        
-        <a> href="https://sheisai.ai/become-a-member"
-          className="shrink-0 inline-flex items-center rounded-full border-2 px-4 lg:px-6 py-2 text-[10px] lg:text-sm font-extrabold tracking-wider border-teal-400 text-teal-300 hover:bg-teal-400 hover:text-black transition ring-1 ring-teal-400/30 whitespace-nowrap"
-        >
-          <span className="hidden sm:inline">BECOME A MEMBER</span>
-          <span className="sm:hidden">MEMBER</span>
-        </a>
+          {/* CTA button - right side */}
+          
+            href="https://sheisai.ai/become-a-member"
+            className="inline-flex items-center rounded-full border-2 border-teal-400 text-teal-300 hover:bg-teal-400 hover:text-black px-4 py-2 text-xs font-extrabold tracking-wider transition whitespace-nowrap"
+          >
+            <span className="hidden sm:inline">BECOME A MEMBER</span>
+            <span className="sm:hidden">MEMBER</span>
+          </a>
+        </div>
       </div>
     </div>
   </nav>

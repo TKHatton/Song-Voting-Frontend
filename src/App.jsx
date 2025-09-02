@@ -460,7 +460,7 @@ const Navigation = () => (
 
         {/* pill CTA on the right */}
         
-          href="https://sheisai.ai/become-a-member"
+        <a> href="https://sheisai.ai/become-a-member"
           className="shrink-0 inline-flex items-center rounded-full border-2 px-4 lg:px-6 py-2 text-[10px] lg:text-sm font-extrabold tracking-wider border-teal-400 text-teal-300 hover:bg-teal-400 hover:text-black transition ring-1 ring-teal-400/30 whitespace-nowrap"
         >
           <span className="hidden sm:inline">BECOME A MEMBER</span>

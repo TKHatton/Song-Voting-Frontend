@@ -427,7 +427,7 @@ const handleVote = (videoId) => {
     }
   };
 
-  // Navigation component - White text, thin font, right-aligned with even spacing
+  // Navigation component - White text, thin font, right-leaning distribution
 const Navigation = () => (
   <nav className="bg-black border-b border-gray-800">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -438,23 +438,21 @@ const Navigation = () => (
           <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
         </a>
 
-        {/* Desktop Navigation - Right aligned with even spacing */}
-        <div className="hidden md:flex items-center justify-end flex-1 ml-8">
-          <div className="flex items-center space-x-8">
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/magazine">MAGAZINE</a>
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/xpert-agency">AGENCY</a>
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/about">ABOUT</a>
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/contact-us">CONTACT</a>
-          </div>
+        {/* Desktop Navigation - Right-leaning with space between items */}
+        <div className="hidden md:flex items-center justify-end flex-1 ml-16">
+          <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide mr-8" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
+          <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide mr-8" href="https://sheisai.ai/magazine">MAGAZINE</a>
+          <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide mr-8" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
+          <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide mr-8" href="https://sheisai.ai/xpert-agency">AGENCY</a>
+          <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide mr-8" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
+          <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide mr-8" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
+          <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide mr-8" href="https://sheisai.ai/about">ABOUT</a>
+          <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide mr-8" href="https://sheisai.ai/contact-us">CONTACT</a>
           
           {/* CTA Button */}
           <a
             href="https://sheisai.ai/become-a-member"
-            className="ml-8 inline-flex items-center rounded-md border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-6 py-2 text-sm font-bold uppercase tracking-wide transition"
+            className="inline-flex items-center rounded-md border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-6 py-2 text-sm font-bold uppercase tracking-wide transition"
           >
             BECOME A MEMBER
           </a>

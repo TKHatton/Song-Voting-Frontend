@@ -427,46 +427,45 @@ const handleVote = (videoId) => {
     }
   };
 
-  // Navigation component
-  const Navigation = () => (
-    <nav className="bg-black/90 border-b border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="h-16 flex items-center justify-between">
-          {/* logo - left side */}
-        <a href="https://sheisai.ai" className="flex items-center flex-shrink-0">
+  // Navigation component - Clean and working
+const Navigation = () => (
+  <nav className="bg-black/90 border-b border-gray-800">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="h-16 flex items-center justify-between">
+        
+        {/* Logo */}
+        <a href="https://sheisai.ai" className="flex-shrink-0">
           <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
         </a>
 
-          {/* center and right content */}
-        <div className="flex items-center justify-end flex-1 ml-4">
-            {/* center links - desktop */}
-          <ul className="hidden lg:flex items-center gap-6 uppercase tracking-wider text-xs font-semibold mr-8">
-            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a></li>
-            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/magazine">MAGAZINE</a></li>
-            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a></li>
-            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/xpert-agency">AGENCY</a></li>
-            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a></li>
-            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/she-is-ai-news">NEWS</a></li>
-            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/about">ABOUT</a></li>
-            <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/contact-us">CONTACT</a></li>
-          </ul>
-
-          {/* Mobile menu - simplified */}
-          <ul className="flex lg:hidden items-center gap-3 uppercase tracking-wider text-xs font-semibold mr-4">
-            <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/magazine">MAG</a></li>
-            <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/about">ABOUT</a></li>
-            <li><a className="text-white/80 hover:text-white transition" href="https://sheisai.ai/contact-us">CONTACT</a></li>
-          </ul>
-
-          {/* CTA button - right side */}
-          
-            href="https://sheisai.ai/become-a-member"
-            className="inline-flex items-center rounded-full border-2 border-teal-400 text-teal-300 hover:bg-teal-400 hover:text-black px-4 py-2 text-xs font-extrabold tracking-wider transition whitespace-nowrap"
-          >
-            <span className="hidden sm:inline">BECOME A MEMBER</span>
-            <span className="sm:hidden">MEMBER</span>
-          </a>
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center space-x-6">
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase tracking-wider" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase tracking-wider" href="https://sheisai.ai/magazine">MAGAZINE</a>
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase tracking-wider" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase tracking-wider" href="https://sheisai.ai/xpert-agency">AGENCY</a>
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase tracking-wider" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase tracking-wider" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase tracking-wider" href="https://sheisai.ai/about">ABOUT</a>
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase tracking-wider" href="https://sheisai.ai/contact-us">CONTACT</a>
         </div>
+
+        {/* Mobile Navigation */}
+        <div className="flex lg:hidden items-center space-x-3">
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase" href="https://sheisai.ai/magazine">MAG</a>
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase" href="https://sheisai.ai/about">ABOUT</a>
+          <a className="text-white/80 hover:text-white transition text-xs font-semibold uppercase" href="https://sheisai.ai/contact-us">CONTACT</a>
+        </div>
+
+        {/* CTA Button */}
+        <a
+          href="https://sheisai.ai/become-a-member"
+          className="ml-4 inline-flex items-center rounded-full border-2 border-teal-400 text-teal-300 hover:bg-teal-400 hover:text-black px-4 py-2 text-xs font-extrabold uppercase tracking-wider transition"
+        >
+          <span className="hidden sm:inline">BECOME A MEMBER</span>
+          <span className="sm:hidden">MEMBER</span>
+        </a>
+
       </div>
     </div>
   </nav>

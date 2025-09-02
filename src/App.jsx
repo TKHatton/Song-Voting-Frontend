@@ -427,19 +427,19 @@ const handleVote = (videoId) => {
     }
   };
 
-// Navigation component
-const Navigation = () => (
-  <nav className="bg-black/90 border-b border-gray-800">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="h-16 flex items-center justify-between">
-        {/* logo - left side */}
+  // Navigation component
+  const Navigation = () => (
+    <nav className="bg-black/90 border-b border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="h-16 flex items-center justify-between">
+          {/* logo - left side */}
         <a href="https://sheisai.ai" className="flex items-center flex-shrink-0">
           <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
         </a>
 
-        {/* center and right content */}
+          {/* center and right content */}
         <div className="flex items-center justify-end flex-1 ml-4">
-          {/* center links - desktop */}
+            {/* center links - desktop */}
           <ul className="hidden lg:flex items-center gap-6 uppercase tracking-wider text-xs font-semibold mr-8">
             <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a></li>
             <li><a className="text-white/80 hover:text-white transition whitespace-nowrap" href="https://sheisai.ai/magazine">MAGAZINE</a></li>

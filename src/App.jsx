@@ -842,7 +842,7 @@ const Navigation = () => (
             <div className="flex space-x-4">
               <a href="https://www.instagram.com/sheisai.ai/" className="text-gray-300 hover:text-white transition-colors">Instagram</a>
               <a href="https://linkedin.com/company/sheisai" className="text-gray-300 hover:text-white transition-colors">LinkedIn</a>
-              <a href="https://twitter.com/sheisai" className="text-gray-300 hover:text-white transition-colors">Twitter</a>
+              <a href="https://twitter.com/SHEISAIOfficial" className="text-gray-300 hover:text-white transition-colors">Twitter</a>
             </div>
           </div>
         </div>

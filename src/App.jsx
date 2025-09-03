@@ -427,6 +427,15 @@ const handleVote = (videoId) => {
     }
   };
 
+  / className="bg-black border-b border-gray-800">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="h-16 flex items-center justify-between">
+        
+        {/* Logo */}
+        <a href="https://sheisai.ai" className="flex-shrink-0">
+          <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
+        <
+
   // Navigation component - Full width distribution like main site
 const Navigation = () => (
   <nav className="bg-black border-b border-gray-800">

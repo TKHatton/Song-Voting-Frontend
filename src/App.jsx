@@ -7,6 +7,110 @@ const API_BASE =
     ? 'http://localhost:8888/.netlify/functions'
     : '/.netlify/functions';
 
+    // Navigation: logo + hamburger in the bar, all links inside the slide-down panel
+const Navigation = ({ onGoHome, menuOpen: controlledOpen, setMenuOpen: setControlledOpen }) => {
+  // Controlled vs. uncontrolled (fallback) state
+  const isControlled = typeof controlledOpen === 'boolean' && typeof setControlledOpen === 'function';
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
+  const menuOpen = isControlled ? controlledOpen : uncontrolledOpen;
+  const setMenuOpen = isControlled ? setControlledOpen : setUncontrolledOpen;
+
+  // Close on Esc
+  useEffect(() => {
+    const onKeyDown = (e) => e.key === 'Escape' && setMenuOpen(false);
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [setMenuOpen]);
+
+  // Lock body scroll while open (nice on mobile)
+  useEffect(() => {
+    if (menuOpen) document.body.classList.add('overflow-hidden');
+    else document.body.classList.remove('overflow-hidden');
+    return () => document.body.classList.remove('overflow-hidden');
+  }, [menuOpen]);
+
+  const toggleMenu = () => setMenuOpen(v => !v);
+  const closeMenu  = () => setMenuOpen(false);
+  const goHomeAndClose = () => {
+    setMenuOpen(false);
+    if (typeof onGoHome === 'function') onGoHome();
+  };
+
+  return (
+    <nav className="bg-black border-b border-gray-800 relative z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top bar: logo left, hamburger right (NO desktop link row) */}
+        <div className="h-16 flex items-center">
+          <a href="https://sheisai.ai" className="flex-shrink-0">
+            <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
+          </a>
+
+          <button
+            type="button"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-controls="nav-panel"
+            aria-expanded={menuOpen}
+            onClick={toggleMenu}
+            className="ml-auto p-2 rounded-md border border-gray-700 text-gray-200 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          >
+            {menuOpen ? (
+              <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Full-screen slide-down panel (desktop + mobile) */}
+      {menuOpen && (
+        <div
+          id="nav-panel"
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-x-0 top-16 bottom-0 z-50 bg-black/95 backdrop-blur-sm border-t border-gray-800 overflow-y-auto"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            {/* Close / Back to Main Page */}
+            <button
+              onClick={goHomeAndClose}
+              className="w-full text-left flex items-center justify-between px-3 py-2 rounded-md bg-gray-800 hover:bg-gray-700 text-white mb-4"
+            >
+              <span>× Close — Back to Main Page</span>
+            </button>
+
+            {/* Links (stack on mobile, grid on larger screens) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
+              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/magazine">MAGAZINE</a>
+              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
+              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/xpert-agency">AGENCY</a>
+              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
+              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
+              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/about">ABOUT</a>
+              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/contact-us">CONTACT</a>
+
+              {/* CTA inside the panel */}
+              <a
+                onClick={closeMenu}
+                href="https://sheisai.ai/become-a-member"
+                className="mt-2 inline-flex w-full justify-center items-center rounded-md border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-6 py-2 text-sm font-bold uppercase tracking-wide transition"
+              >
+                BECOME A MEMBER
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+
 function App() {
   const [timeLeft, setTimeLeft] = useState({});
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -428,109 +532,6 @@ const handleVote = (videoId) => {
       window.shareOnTwitter(shareText, shareUrl);
     }
   };
-
-  // Navigation: logo + hamburger in the bar, all links inside the slide-down panel
-const Navigation = ({ onGoHome, menuOpen: controlledOpen, setMenuOpen: setControlledOpen }) => {
-  // Controlled vs. uncontrolled (fallback) state
-  const isControlled = typeof controlledOpen === 'boolean' && typeof setControlledOpen === 'function';
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
-  const menuOpen = isControlled ? controlledOpen : uncontrolledOpen;
-  const setMenuOpen = isControlled ? setControlledOpen : setUncontrolledOpen;
-
-  // Close on Esc
-  useEffect(() => {
-    const onKeyDown = (e) => e.key === 'Escape' && setMenuOpen(false);
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [setMenuOpen]);
-
-  // Lock body scroll while open (nice on mobile)
-  useEffect(() => {
-    if (menuOpen) document.body.classList.add('overflow-hidden');
-    else document.body.classList.remove('overflow-hidden');
-    return () => document.body.classList.remove('overflow-hidden');
-  }, [menuOpen]);
-
-  const toggleMenu = () => setMenuOpen(v => !v);
-  const closeMenu  = () => setMenuOpen(false);
-  const goHomeAndClose = () => {
-    setMenuOpen(false);
-    if (typeof onGoHome === 'function') onGoHome();
-  };
-
-  return (
-    <nav className="bg-black border-b border-gray-800 relative z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top bar: logo left, hamburger right (NO desktop link row) */}
-        <div className="h-16 flex items-center">
-          <a href="https://sheisai.ai" className="flex-shrink-0">
-            <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
-          </a>
-
-          <button
-            type="button"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-controls="nav-panel"
-            aria-expanded={menuOpen}
-            onClick={toggleMenu}
-            className="ml-auto p-2 rounded-md border border-gray-700 text-gray-200 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-          >
-            {menuOpen ? (
-              <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Full-screen slide-down panel (desktop + mobile) */}
-      {menuOpen && (
-        <div
-          id="nav-panel"
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-x-0 top-16 bottom-0 z-50 bg-black/95 backdrop-blur-sm border-t border-gray-800 overflow-y-auto"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            {/* Close / Back to Main Page */}
-            <button
-              onClick={goHomeAndClose}
-              className="w-full text-left flex items-center justify-between px-3 py-2 rounded-md bg-gray-800 hover:bg-gray-700 text-white mb-4"
-            >
-              <span>× Close — Back to Main Page</span>
-            </button>
-
-            {/* Links (stack on mobile, grid on larger screens) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
-              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/magazine">MAGAZINE</a>
-              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
-              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/xpert-agency">AGENCY</a>
-              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
-              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
-              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/about">ABOUT</a>
-              <a onClick={closeMenu} className="block text-white hover:text-gray-300 transition text-base sm:text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/contact-us">CONTACT</a>
-
-              {/* CTA inside the panel */}
-              <a
-                onClick={closeMenu}
-                href="https://sheisai.ai/become-a-member"
-                className="mt-2 inline-flex w-full justify-center items-center rounded-md border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-6 py-2 text-sm font-bold uppercase tracking-wide transition"
-              >
-                BECOME A MEMBER
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
 
   // Privacy Policy Page
   const PrivacyPolicyPage = () => (

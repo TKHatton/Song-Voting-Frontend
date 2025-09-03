@@ -475,9 +475,6 @@ const Navigation = () => (
   </nav>
 );
 
-export default Navigation;
-
-
   // Privacy Policy Page
   const PrivacyPolicyPage = () => (
     <div className="min-h-screen bg-black text-white py-16 px-4 sm:px-6 lg:px-8">

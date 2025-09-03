@@ -428,7 +428,7 @@ const handleVote = (videoId) => {
   };
 
   // Navigation component - Full width distribution like main site
-const Navigation = () => {
+const Navigation = ({ onGoHome }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // Close on Esc
@@ -440,17 +440,24 @@ const Navigation = () => {
 
   const closeMobile = () => setMobileOpen(false);
 
+  const goHomeAndClose = () => {
+    setMobileOpen(false);
+    // If App passed a handler, use SPA navigation; otherwise fallback to top.
+    if (typeof onGoHome === 'function') onGoHome();
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <nav className="bg-black border-b border-gray-800">
+    <nav className="bg-black border-b border-gray-800 relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top bar */}
-        <div className="h-16 flex items-center justify-between">
-          {/* Logo */}
+        <div className="h-16 flex items-center">
+          {/* Logo (left) */}
           <a href="https://sheisai.ai" className="flex-shrink-0">
             <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
           </a>
 
-          {/* Desktop Navigation - Full width spread */}
+          {/* Desktop Navigation - Full width spread (center) */}
           <div className="hidden md:flex items-center flex-1 justify-center ml-8">
             <div className="flex items-center justify-between w-full max-w-4xl">
               <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
@@ -464,16 +471,16 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* CTA - desktop */}
+          {/* CTA - desktop (right) */}
           <a
             href="https://sheisai.ai/become-a-member"
-            className="hidden md:inline-flex items-center rounded-md border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-6 py-2 text-sm font-bold uppercase tracking-wide transition"
+            className="hidden md:inline-flex items-center rounded-md border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-6 py-2 text-sm font-bold uppercase tracking-wide transition ml-6"
           >
             BECOME A MEMBER
           </a>
 
-          {/* Mobile row: add hamburger (keeps your existing quick links/buttons) */}
-          <div className="flex md:hidden items-center space-x-4">
+          {/* Hamburger - mobile only (push to far right) */}
+          <div className="ml-auto md:hidden">
             <button
               type="button"
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
@@ -482,7 +489,6 @@ const Navigation = () => {
               onClick={() => setMobileOpen(v => !v)}
               className="p-2 rounded-md border border-gray-700 text-gray-200 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             >
-              {/* icon toggles */}
               {mobileOpen ? (
                 <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M6 18L18 6M6 6l12 12" />
@@ -493,41 +499,40 @@ const Navigation = () => {
                 </svg>
               )}
             </button>
-
-            {/* your existing mobile quick links */}
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase" href="https://sheisai.ai/magazine">MAG</a>
-            <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase" href="https://sheisai.ai/about">ABOUT</a>
-            <a
-              href="https://sheisai.ai/become-a-member"
-              className="inline-flex items-center rounded-md border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-4 py-1 text-xs font-bold uppercase transition"
-            >
-              MEMBER
-            </a>
           </div>
         </div>
+      </div>
 
-        {/* Collapsible mobile panel (full menu + CTA) */}
-        <div
-          id="mobile-menu"
-          className={`${mobileOpen ? 'block' : 'hidden'} md:hidden border-t border-gray-800`}
-        >
-          <div className="px-4 py-4 space-y-3">
-            <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
-            <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/magazine">MAGAZINE</a>
-            <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
-            <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/xpert-agency">AGENCY</a>
-            <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
-            <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
-            <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/about">ABOUT</a>
-            <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/contact-us">CONTACT</a>
-            <a
-              onClick={closeMobile}
-              href="https://sheisai.ai/become-a-member"
-              className="mt-2 inline-flex w-full justify-center items-center rounded-md border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-6 py-2 text-sm font-bold uppercase tracking-wide transition"
-            >
-              BECOME A MEMBER
-            </a>
-          </div>
+      {/* Mobile panel (covers below the top bar) */}
+      <div
+        id="mobile-menu"
+        className={`${mobileOpen ? 'block' : 'hidden'} md:hidden border-t border-gray-800`}
+      >
+        <div className="px-4 py-4 space-y-3 bg-black/95 backdrop-blur-sm">
+          {/* Close / Back to main page */}
+          <button
+            onClick={goHomeAndClose}
+            className="w-full text-left flex items-center justify-between px-3 py-2 rounded-md bg-gray-800 hover:bg-gray-700 text-white"
+          >
+            <span>× Close — Back to Main Page</span>
+          </button>
+
+          <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
+          <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/magazine">MAGAZINE</a>
+          <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
+          <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/xpert-agency">AGENCY</a>
+          <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
+          <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
+          <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/about">ABOUT</a>
+          <a onClick={closeMobile} className="block text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/contact-us">CONTACT</a>
+
+          <a
+            onClick={closeMobile}
+            href="https://sheisai.ai/become-a-member"
+            className="mt-2 inline-flex w-full justify-center items-center rounded-md border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-black px-6 py-2 text-sm font-bold uppercase tracking-wide transition"
+          >
+            BECOME A MEMBER
+          </a>
         </div>
       </div>
     </nav>

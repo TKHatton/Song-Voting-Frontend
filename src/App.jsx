@@ -251,8 +251,8 @@ const featuredVideo = {
       creator: 'May Kaneko',
       duration: null,
       description: 'Stunning visual interpretation of the SHE IS AI theme through digital artistry',
-      thumbnail: '/thumbnails/may-kaneko.jpg',
-      imageUrl: '/images/may-kaneko-submission.jpg',
+      thumbnail: '/thumbnails/may-kaneko.png',
+      imageUrl: '/images/may-kaneko.png',
       linkedinUrl: 'https://www.linkedin.com/in/maykaneko', // Update with actual LinkedIn
       votes: votes[7] || 0,
       isImage: true

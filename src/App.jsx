@@ -429,8 +429,14 @@ const handleVote = (videoId) => {
     }
   };
 
-  // Navigation component - minimal bar (logo + hamburger), full-screen panel for links/CTA
-const Navigation = ({ onGoHome, menuOpen, setMenuOpen }) => {
+  // Minimal bar w/ desktop link row restored, plus hamburger + full-screen panel
+const Navigation = ({ onGoHome, menuOpen: controlledOpen, setMenuOpen: setControlledOpen }) => {
+  // Controlled vs uncontrolled (fallback) state
+  const isControlled = typeof controlledOpen === 'boolean' && typeof setControlledOpen === 'function';
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
+  const menuOpen = isControlled ? controlledOpen : uncontrolledOpen;
+  const setMenuOpen = isControlled ? setControlledOpen : setUncontrolledOpen;
+
   // Close on Esc
   useEffect(() => {
     const onKeyDown = (e) => e.key === 'Escape' && setMenuOpen(false);
@@ -438,14 +444,14 @@ const Navigation = ({ onGoHome, menuOpen, setMenuOpen }) => {
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [setMenuOpen]);
 
-  // Lock body scroll while menu is open
+  // Lock body scroll when panel is open
   useEffect(() => {
     if (menuOpen) document.body.classList.add('overflow-hidden');
     else document.body.classList.remove('overflow-hidden');
     return () => document.body.classList.remove('overflow-hidden');
   }, [menuOpen]);
 
-  const toggleMenu = () => setMenuOpen((v) => !v);
+  const toggleMenu = () => setMenuOpen(v => !v);
   const closeMenu  = () => setMenuOpen(false);
   const goHomeAndClose = () => {
     setMenuOpen(false);
@@ -455,12 +461,28 @@ const Navigation = ({ onGoHome, menuOpen, setMenuOpen }) => {
   return (
     <nav className="bg-black border-b border-gray-800 relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top bar: logo left, hamburger right (no desktop links/CTA) */}
+        {/* Top bar */}
         <div className="h-16 flex items-center">
+          {/* Logo (left) */}
           <a href="https://sheisai.ai" className="flex-shrink-0">
             <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
           </a>
 
+          {/* Desktop links (center) */}
+          <div className="hidden md:flex items-center flex-1 justify-center ml-8">
+            <div className="flex items-center justify-between w-full max-w-4xl">
+              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
+              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/magazine">MAGAZINE</a>
+              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
+              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/xpert-agency">AGENCY</a>
+              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
+              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
+              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/about">ABOUT</a>
+              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/contact-us">CONTACT</a>
+            </div>
+          </div>
+
+          {/* Hamburger (right) — visible on mobile AND desktop */}
           <button
             type="button"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -482,13 +504,13 @@ const Navigation = ({ onGoHome, menuOpen, setMenuOpen }) => {
         </div>
       </div>
 
-      {/* Full-screen slide-down panel (mobile + desktop) */}
+      {/* Full-screen slide-down panel for both mobile & desktop */}
       {menuOpen && (
         <div
           id="nav-panel"
           role="dialog"
           aria-modal="true"
-          className="fixed inset-x-0 top-16 bottom-0 z-40 bg-black/95 backdrop-blur-sm border-t border-gray-800 overflow-y-auto"
+          className="fixed inset-x-0 top-16 bottom-0 z-50 bg-black/95 backdrop-blur-sm border-t border-gray-800 overflow-y-auto"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             {/* Close / Back to Main Page */}

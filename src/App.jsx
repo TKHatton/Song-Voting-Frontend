@@ -189,7 +189,7 @@ const featuredVideo = {
       title: 'Cross Cultural Perspective',
       creator: 'Nagawa Lule',
       duration: '0:46',
-      description: 'Nagawa shares a striking creative global perspective from London, blending cultures & customs with the SHE IS AI Vision.',
+      description: 'A creative global perspective from London showcasing cultures & customs across continents',
       thumbnail: '/thumbnails/ngawai-lule.jpg',
       videoUrl: 'https://www.youtube.com/embed/Oa-r4GSRSCQ',
       linkedinUrl: 'https://www.linkedin.com/in/nagawa-l/',

@@ -429,9 +429,9 @@ const handleVote = (videoId) => {
     }
   };
 
-  // Minimal bar w/ desktop link row restored, plus hamburger + full-screen panel
+  // Navigation: logo + hamburger in the bar, all links inside the slide-down panel
 const Navigation = ({ onGoHome, menuOpen: controlledOpen, setMenuOpen: setControlledOpen }) => {
-  // Controlled vs uncontrolled (fallback) state
+  // Controlled vs. uncontrolled (fallback) state
   const isControlled = typeof controlledOpen === 'boolean' && typeof setControlledOpen === 'function';
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
   const menuOpen = isControlled ? controlledOpen : uncontrolledOpen;
@@ -444,7 +444,7 @@ const Navigation = ({ onGoHome, menuOpen: controlledOpen, setMenuOpen: setContro
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [setMenuOpen]);
 
-  // Lock body scroll when panel is open
+  // Lock body scroll while open (nice on mobile)
   useEffect(() => {
     if (menuOpen) document.body.classList.add('overflow-hidden');
     else document.body.classList.remove('overflow-hidden');
@@ -461,28 +461,12 @@ const Navigation = ({ onGoHome, menuOpen: controlledOpen, setMenuOpen: setContro
   return (
     <nav className="bg-black border-b border-gray-800 relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top bar */}
+        {/* Top bar: logo left, hamburger right (NO desktop link row) */}
         <div className="h-16 flex items-center">
-          {/* Logo (left) */}
           <a href="https://sheisai.ai" className="flex-shrink-0">
             <img src="/assets/sheisai-logo.png" alt="SHE IS AI" className="h-8 w-auto" />
           </a>
 
-          {/* Desktop links (center) */}
-          <div className="hidden md:flex items-center flex-1 justify-center ml-8">
-            <div className="flex items-center justify-between w-full max-w-4xl">
-              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/ai-fashion-awards">AI FASHION AWARDS</a>
-              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/magazine">MAGAZINE</a>
-              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-community">5 PILLARS</a>
-              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/xpert-agency">AGENCY</a>
-              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/metaverse-gallery">METAVERSE</a>
-              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/she-is-ai-news">NEWS</a>
-              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/about">ABOUT</a>
-              <a className="text-white hover:text-gray-300 transition text-sm font-light uppercase tracking-wide" href="https://sheisai.ai/contact-us">CONTACT</a>
-            </div>
-          </div>
-
-          {/* Hamburger (right) — visible on mobile AND desktop */}
           <button
             type="button"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -504,7 +488,7 @@ const Navigation = ({ onGoHome, menuOpen: controlledOpen, setMenuOpen: setContro
         </div>
       </div>
 
-      {/* Full-screen slide-down panel for both mobile & desktop */}
+      {/* Full-screen slide-down panel (desktop + mobile) */}
       {menuOpen && (
         <div
           id="nav-panel"
@@ -547,7 +531,6 @@ const Navigation = ({ onGoHome, menuOpen: controlledOpen, setMenuOpen: setContro
     </nav>
   );
 };
-
 
   // Privacy Policy Page
   const PrivacyPolicyPage = () => (

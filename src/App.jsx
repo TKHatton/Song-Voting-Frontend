@@ -150,7 +150,7 @@ const [showFireworks, setShowFireworks] = useState(false);
 
 // Updated countdown timer with fireworks trigger
 useEffect(() => {
-  const endDate = new Date('2025-09-04T02:00:00-05:00').getTime(); // September 4, 2025 at 2:00 AM EST
+  const endDate = new Date('2025-09-04T01:00:00-05:00').getTime(); // September 4, 2025 at 1:00 AM EST
   
   const calculateTimeLeft = () => {
     const now = new Date().getTime();

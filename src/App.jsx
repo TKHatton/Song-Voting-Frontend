@@ -146,11 +146,11 @@ useEffect(() => {
 
   // Calculate countdown timer (14 days from now)
   useEffect(() => {
-  const endDate = new Date(Date.now() + (30 * 1000)).getTime(); // Set ONCE, outside the function
+  const endDate = new Date(Date.now() + (45 * 1000)).getTime(); // 45 seconds from now
   
   const calculateTimeLeft = () => {
     const now = new Date().getTime();
-    const difference = endDate - now; // Use the fixed end date
+    const difference = endDate - now;
 
     if (difference > 0) {
       setTimeLeft({

@@ -146,25 +146,28 @@ useEffect(() => {
 
   // Calculate countdown timer (14 days from now)
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date().getTime();
-      const endDate = new Date(now + (30 * 1000)).getTime(); // 30 seconds from now
-      const difference = endDate - now;
+  const endDate = new Date(Date.now() + (30 * 1000)).getTime(); // Set ONCE, outside the function
+  
+  const calculateTimeLeft = () => {
+    const now = new Date().getTime();
+    const difference = endDate - now; // Use the fixed end date
 
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
-      }
-    };
+    if (difference > 0) {
+      setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((difference % (1000 * 60)) / 1000)
+      });
+    } else {
+      setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    }
+  };
 
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-    return () => clearInterval(timer);
-  }, []);
+  calculateTimeLeft();
+  const timer = setInterval(calculateTimeLeft, 1000);
+  return () => clearInterval(timer);
+}, []);
 
   // Featured video (explainer)
 const featuredVideo = {

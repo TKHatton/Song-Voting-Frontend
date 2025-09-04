@@ -145,8 +145,12 @@ useEffect(() => {
 }, []);
 
   // Calculate countdown timer (14 days from now)
-  useEffect(() => {
-  const endDate = new Date('2025-09-19T12:00:00+12:00').getTime(); // September 19, 2025 at 12:00 PM NZDT
+  // Add this state for fireworks
+const [showFireworks, setShowFireworks] = useState(false);
+
+// Updated countdown timer with fireworks trigger
+useEffect(() => {
+  const endDate = new Date('2025-09-19T12:00:00+12:00').getTime();
   
   const calculateTimeLeft = () => {
     const now = new Date().getTime();
@@ -161,13 +165,127 @@ useEffect(() => {
       });
     } else {
       setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      // Trigger fireworks when countdown reaches zero
+      if (!showFireworks) {
+        setShowFireworks(true);
+      }
     }
   };
 
   calculateTimeLeft();
   const timer = setInterval(calculateTimeLeft, 1000);
   return () => clearInterval(timer);
-}, []);
+}, [showFireworks]);
+
+// Fireworks Component
+const FireworksDisplay = () => {
+  const [fireworks, setFireworks] = useState([]);
+
+  useEffect(() => {
+    if (!showFireworks) return;
+
+    // Create fireworks every 500ms for 10 seconds
+    const fireworkInterval = setInterval(() => {
+      const newFirework = {
+        id: Date.now() + Math.random(),
+        x: Math.random() * window.innerWidth,
+        y: window.innerHeight - 100 + Math.random() * 200,
+        color: ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'][Math.floor(Math.random() * 6)]
+      };
+      
+      setFireworks(prev => [...prev, newFirework]);
+      
+      // Remove firework after animation
+      setTimeout(() => {
+        setFireworks(prev => prev.filter(fw => fw.id !== newFirework.id));
+      }, 2000);
+    }, 500);
+
+    // Stop creating fireworks after 10 seconds
+    setTimeout(() => {
+      clearInterval(fireworkInterval);
+    }, 10000);
+
+    return () => clearInterval(fireworkInterval);
+  }, [showFireworks]);
+
+  if (!showFireworks) return null;
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-40">
+      {fireworks.map(firework => (
+        <div
+          key={firework.id}
+          className="absolute animate-bounce"
+          style={{
+            left: firework.x,
+            top: firework.y,
+            animationDuration: '2s',
+            animationTimingFunction: 'ease-out'
+          }}
+        >
+          {/* Firework burst effect */}
+          <div className="relative">
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 rounded-full animate-ping"
+                style={{
+                  backgroundColor: firework.color,
+                  left: '50%',
+                  top: '50%',
+                  transform: `translate(-50%, -50%) rotate(${i * 30}deg) translateY(-20px)`,
+                  animationDelay: `${i * 0.1}s`,
+                  animationDuration: '1.5s'
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Updated Countdown Timer JSX (add this around your existing timer)
+{/* Countdown Timer */}
+<div className="mb-8 relative">
+  <div className="flex justify-center space-x-4 sm:space-x-8 mb-4">
+    <div className="text-center">
+      <div className="text-3xl sm:text-4xl font-bold text-yellow-400">{timeLeft.days || 0}</div>
+      <div className="text-sm text-gray-300">DAYS</div>
+    </div>
+    <div className="text-center">
+      <div className="text-3xl sm:text-4xl font-bold text-yellow-400">{timeLeft.hours || 0}</div>
+      <div className="text-sm text-gray-300">HOURS</div>
+    </div>
+    <div className="text-center">
+      <div className="text-3xl sm:text-4xl font-bold text-yellow-400">{timeLeft.minutes || 0}</div>
+      <div className="text-sm text-gray-300">MINUTES</div>
+    </div>
+    <div className="text-center">
+      <div className="text-3xl sm:text-4xl font-bold text-yellow-400">{timeLeft.seconds || 0}</div>
+      <div className="text-sm text-gray-300">SECONDS</div>
+    </div>
+  </div>
+  
+  {/* Competition Complete Message */}
+  {showFireworks && (
+    <div className="absolute inset-0 flex items-center justify-center bg-black/80 rounded-lg">
+      <div className="text-center">
+        <h2 className="text-2xl sm:text-4xl font-bold text-yellow-400 mb-4">
+          🎉 COMPETITION COMPLETE! 🎉
+        </h2>
+        <p className="text-lg text-white">
+          Thank you to all participants!
+        </p>
+      </div>
+    </div>
+  )}
+</div>
+
+{/* Add FireworksDisplay component */}
+<FireworksDisplay />
 
   // Featured video (explainer)
 const featuredVideo = {

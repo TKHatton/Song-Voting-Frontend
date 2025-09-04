@@ -148,7 +148,7 @@ useEffect(() => {
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
-      const endDate = new Date(now + (2 * 60 * 1000)).getTime(); // 2 minutes from now
+      const endDate = new Date(now + (30 * 1000)).getTime(); // 30 seconds from now
       const difference = endDate - now;
 
       if (difference > 0) {

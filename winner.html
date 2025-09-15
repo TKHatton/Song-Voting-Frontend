@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winner Announced - SHE IS AI Theme Song Video Competition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Navigation Styles - matching original site exactly */
+        .nav-header {
+            background: #000;
+            border-bottom: 1px solid #374151;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-bar {
+            height: 4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo a {
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 2rem;
+            width: auto;
+        }
+
+        .hamburger {
+            margin-left: auto;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid #374151;
+            color: #e5e7eb;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover {
+            background: #374151;
+        }
+
+        .hamburger:focus {
+            outline: 2px solid #fbbf24;
+            outline-offset: 2px;
+        }
+
+        .hamburger svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .nav-panel {
+            position: fixed;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(4px);
+            border-top: 1px solid #374151;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .nav-panel.active {
+            display: block;
+        }
+
+        .nav-panel-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .close-nav {
+            width: 100%;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            background: #374151;
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .close-nav:hover {
+            background: #4b5563;
+        }
+
+        .nav-links {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .nav-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .nav-link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.5rem 0;
+        }
+
+        @media (min-width: 640px) {
+            .nav-link {
+                font-size: 0.875rem;
+            }
+        }
+
+        .nav-link:hover {
+            color: #d1d5db;
+        }
+
+        .member-cta {
+            margin-top: 0.5rem;
+            display: inline-flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.375rem;
+            border: 2px solid #14b8a6;
+            color: #14b8a6;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .member-cta:hover {
+            background: #14b8a6;
+            color: #000;
+        }
+
+        @media (min-width: 768px) {
+            .nav-content {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-content {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Fireworks Animation */
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .spark {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #fbbf24;
+        }
+
+        @keyframes sparkFly {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--dx), var(--dy));
+                opacity: 0;
+            }
+        }
+
+        /* Confetti Animation */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title .highlight {
+            color: #fbbf24;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .trophy-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .winner-section {
+            padding: 4rem 0;
+            text-align: center;
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+
+        .winner-card {
+            background: #111827;
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            border: 1px solid #374151;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .winner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
+            animation: shimmer 2s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
+        }
+
+        .crown {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .winner-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .winner-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #d1d5db;
+        }
+
+        .winner-description {
+            font-size: 1rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: #fbbf24;
+            color: #000;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+        }
+
+        .linkedin-link:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+        }
+
+        .video-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .video-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #fbbf24;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #111827;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid #374151;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .video-info h3 {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-info p {
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+
+        .stats-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            animation: fadeInUp 2s ease-out 1s both;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fbbf24;
+            display: block;
+            animation: countUp 2s ease-out 2s both;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes countUp {
+            from { 
+                transform: scale(0);
+                opacity: 0;
+            }
+            to { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .thanks-section {
+            padding: 4rem 0;
+            background: #111827;
+            margin: 4rem 0;
+            border-radius: 1rem;
+            border: 1px solid #374151;
+        }
+
+        .thanks-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .thanks-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #fbbf24;
+        }
+
+        .thanks-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: #fbbf24;
+            text-decoration: none;
+            border: 2px solid #fbbf24;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            background: #fbbf24;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .winner-name {
+                font-size: 2rem;
+            }
+            
+            .winner-card {
+                padding: 2rem 1rem;
+                margin: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid #374151;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        .footer-column h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-logo {
+            height: 2rem;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-bottom-text {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .footer-bottom-link {
+            color: #9ca3af;
+            text-decoration: none;
+            margin-left: 0.25rem;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom-link:hover {
+            color: white;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #111827;
+            border-radius: 1rem;
+            border: 1px solid #374151;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            color: #fbbf24;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .modal-close:hover {
+            color: white;
+        }
+
+        .modal-body {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .modal-body h3 {
+            color: #fbbf24;
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .modal-body ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body strong {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="nav-content">
+            <div class="nav-bar">
+                <div class="logo">
+                    <a href="https://sheisai.ai">
+                        <img src="/assets/sheisai-logo.png" alt="SHE IS AI" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span style="display: none; color: #fbbf24; font-weight: bold; font-size: 1.5rem;">SHE IS AI</span>
+                    </a>
+                </div>
+                <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Panel -->
+        <div class="nav-panel" id="nav-panel" role="dialog" aria-modal="true">
+            <div class="nav-panel-content">
+                <button class="close-nav" onclick="closeMenu()">
+                    <span>× Close — Back to Main Page</span>
+                </button>
+
+                <div class="nav-links">
+                    <a href="https://sheisai.ai/ai-fashion-awards" class="nav-link" onclick="closeMenu()">AI Fashion Awards</a>
+                    <a href="https://sheisai.ai/magazine" class="nav-link" onclick="closeMenu()">Magazine</a>
+                    <a href="https://sheisai.ai/she-is-ai-community" class="nav-link" onclick="closeMenu()">5 Pillars</a>
+                    <a href="https://sheisai.ai/xpert-agency" class="nav-link" onclick="closeMenu()">Agency</a>
+                    <a href="https://sheisai.ai/metaverse-gallery" class="nav-link" onclick="closeMenu()">Metaverse</a>
+                    <a href="https://sheisai.ai/she-is-ai-news" class="nav-link" onclick="closeMenu()">News</a>
+                    <a href="https://sheisai.ai/about" class="nav-link" onclick="closeMenu()">About</a>
+                    <a href="https://sheisai.ai/contact-us" class="nav-link" onclick="closeMenu()">Contact</a>
+
+                    <a href="https://sheisai.ai/become-a-member" class="member-cta" onclick="closeMenu()">
+                        Become A Member
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="trophy-icon">🏆</div>
+            <h1 class="hero-title">
+                <span class="highlight">WINNER</span> ANNOUNCED!
+            </h1>
+            <p class="hero-subtitle">
+                SHE IS AI Theme Song Video Competition
+            </p>
+        </section>
+
+        <!-- Winner Section -->
+        <section class="winner-section">
+            <div class="winner-card">
+                <div class="crown">👑</div>
+                <h2 class="winner-name">Nagawa Lule</h2>
+                <h3 class="winner-title">"Cross Cultural Perspective"</h3>
+                <p class="winner-description">
+                    Congratulations to Nagawa Lule for her incredible cross-cultural perspective on "We Rewrite the Light"! 
+                    Her creative global viewpoint from London beautifully showcased cultures and customs across continents, 
+                    perfectly embodying the international and inclusive spirit of the SHE IS AI community.
+                </p>
+                
+                <a href="https://www.linkedin.com/in/nagawa-l/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </section>
+
+        <!-- Winner Video Section -->
+        <section class="video-section">
+            <h2 class="video-title">The Winning Performance</h2>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/Oa-r4GSRSCQ" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3>"Cross Cultural Perspective" by Nagawa Lule</h3>
+                    <p>
+                        A stunning creative global perspective from London showcasing the beauty of cultures and 
+                        customs across continents, bringing together the universal themes of empowerment and 
+                        diversity that define the SHE IS AI movement.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Thank You Section -->
+        <section class="thanks-section">
+            <div class="thanks-content">
+                <h2 class="thanks-title">Thank You to Our Amazing Community!</h2>
+                <p class="thanks-text">
+                    To every creator who shared their incredible interpretation of "We Rewrite the Light" - 
+                    your creativity, passion, and talent made this competition truly special. Each video and 
+                    artwork brought something unique and inspiring to our community.
+                </p>
+                <p class="thanks-text">
+                    To everyone who engaged with and supported our participants throughout the competition - 
+                    your encouragement and community spirit made this possible. You showed the true heart 
+                    of what SHE IS AI represents.
+                </p>
+                <p class="thanks-text">
+                    Together, we celebrated the power of AI, creativity, and women's voices in technology. 
+                    This is just the beginning of our journey to rewrite the light! ✨
+                </p>
+                
+                <a href="https://sheisai.ai/become-a-member" class="cta-button">
+                    Join Our Community
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <img src="/assets/sheisai-logo.png" alt="SHE IS AI" class="footer-logo" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; color: #fbbf24; font-weight: bold; font-size: 1.5rem; margin-bottom: 1rem;">SHE IS AI</div>
+                <p class="footer-description">
+                    Empowering women in AI through community, education, and opportunity.
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/sheisai.ai/" class="footer-link">Instagram</a>
+                    <a href="https://linkedin.com/company/sheisai" class="footer-link">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="https://sheisai.ai" class="footer-link">Home</a></li>
+                    <li><a href="https://sheisai.ai/about" class="footer-link">About</a></li>
+                    <li><a href="https://sheisai.ai/contact-us" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>SHE IS AI</h3>
+                <ul>
+                    <li><a href="https://sheisai.ai/magazine" class="footer-link">Read Magazine</a></li>
+                    <li><a href="https://sheisai.ai/she-is-ai-community" class="footer-link">Join Community</a></li>
+                    <li><a href="https://sheisai.ai/ai-fashion-awards" class="footer-link">AI Fashion Awards</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="https://www.instagram.com/sheisai.ai/" class="footer-link">Instagram</a>
+                    <a href="https://linkedin.com/company/sheisai" class="footer-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-text">
+                © 2025 | SHE IS AI ™ | All rights reserved | 
+                <button onclick="showPrivacyPolicy()" class="footer-bottom-link">Privacy Policy</button> | 
+                <button onclick="showTermsOfUse()" class="footer-bottom-link">Terms of Use</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button onclick="closeModal('privacyModal')" class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                    <strong>Privacy:</strong> We value your privacy. When you subscribe, we collect your name and email 
+                    address solely for communication for the purposes of updating you about upcoming 
+                    news and opportunities from SHE IS AI. We do not sell or share your personal 
+                    information with third parties. You can unsubscribe at any time.
+                </p>
+                <p>
+                    <strong>SHE IS AI</strong> is committed to protecting your privacy.
+                </p>
+                <p>
+                    When you subscribe, register, or purchase from our site (https://sheisai.ai or 
+                    https://sheisaiart.com), we may collect certain personal information, such as your name and email address.
+                </p>
+                <h3>How we use your information:</h3>
+                <ul>
+                    <li>To communicate with you about <strong>news, events, promotions, and opportunities</strong> related to SHE IS AI</li>
+                    <li>To fulfill your orders and manage transactions on our merch store</li>
+                    <li>To improve our website and services</li>
+                </ul>
+                <h3>We do NOT:</h3>
+                <ul>
+                    <li>Sell your personal information</li>
+                    <li>Share your personal information with third parties, except as required to provide services (such as payment processors or mailing platforms), or to comply with legal obligations</li>
+                </ul>
+                <h3>Cookies:</h3>
+                <p>
+                    Our site may use cookies to enhance your browsing experience and to collect non-personal 
+                    data (such as analytics on site usage).
+                </p>
+                <h3>Your choices:</h3>
+                <p>
+                    You can unsubscribe from our email communications at any time. You can also manage cookie 
+                    settings in your browser.
+                </p>
+                <p>
+                    For questions about this policy, contact: <strong>sheisai@sheisai.ai</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Use Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Terms of Use 2025</h2>
+                <button onclick="closeModal('termsModal')" class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                    Welcome to <strong>SHE IS AI</strong> (https://sheisai.ai and https://sheisaiart.com).
+                </p>
+                <p>
+                    By accessing and using this site, you agree to the following terms:
+                </p>
+                <h3>Content:</h3>
+                <p>
+                    All content, images, designs, articles, and materials on this site are the property of SHE IS AI or 
+                    its contributors, and may not be reproduced, copied, or used for commercial purposes without permission.
+                </p>
+                <h3>Community Conduct:</h3>
+                <p>
+                    When participating in SHE IS AI communities (such as Skool or events), users agree to engage 
+                    respectfully and professionally. We reserve the right to remove members who violate community standards.
+                </p>
+                <h3>Purchases:</h3>
+                <p>
+                    All sales from <strong>sheisaiart.com</strong> are subject to our Refund Policy (see link).
+                </p>
+                <h3>Disclaimer:</h3>
+                <p>
+                    Content on this site is provided for educational and informational purposes only. It does not 
+                    constitute legal, financial, or medical advice.
+                </p>
+                <h3>Changes:</h3>
+                <p>
+                    SHE IS AI reserves the right to update these terms at any time.
+                </p>
+                <p>
+                    <strong>Questions? Contact:</strong> sheisai@sheisai.ai
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation Functions
+        function toggleMenu() {
+            const navPanel = document.getElementById('nav-panel');
+            const hamburger = document.querySelector('.hamburger');
+            const isOpen = navPanel.classList.contains('active');
+            
+            if (isOpen) {
+                closeMenu();
+            } else {
+                navPanel.classList.add('active');
+                hamburger.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMenu() {
+            const navPanel = document.getElementById('nav-panel');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navPanel.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+                closeModal('privacyModal');
+                closeModal('termsModal');
+            }
+        });
+
+        // Modal Functions
+        function showPrivacyPolicy() {
+            document.getElementById('privacyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showTermsOfUse() {
+            document.getElementById('termsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Enhanced Fireworks Animation with proper upward launch
+        function createFirework(startX, targetY, size = 'normal') {
+            // Launch rocket from bottom of screen
+            const rocket = document.createElement('div');
+            rocket.style.position = 'fixed';
+            rocket.style.left = startX + 'px';
+            rocket.style.bottom = '0px';
+            rocket.style.width = '3px';
+            rocket.style.height = '8px';
+            rocket.style.background = '#fff';
+            rocket.style.borderRadius = '50%';
+            rocket.style.zIndex = '100';
+            rocket.style.boxShadow = '0 0 6px #fff';
+            document.body.appendChild(rocket);
+            
+            // Animate rocket going up
+            const launchDuration = 800 + Math.random() * 400;
+            rocket.style.transition = `bottom ${launchDuration}ms ease-out`;
+            rocket.style.bottom = (window.innerHeight - targetY) + 'px';
+            
+            // Create explosion when rocket reaches target
+            setTimeout(() => {
+                rocket.remove();
+                
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = startX + 'px';
+                firework.style.top = targetY + 'px';
+                document.body.appendChild(firework);
+
+                const colorSets = {
+                    rainbow: ['#ff0066', '#ff6600', '#ffcc00', '#00ff66', '#0066ff', '#6600ff', '#ff0099'],
+                    warm: ['#ff4757', '#ff6b6b', '#ffa502', '#ff9f43', '#ff6348', '#ff5722'],
+                    cool: ['#00d2d3', '#0abde3', '#006ba6', '#7209b7', '#3c6382', '#40739e'],
+                    gold: ['#ffd700', '#ffb347', '#ffa500', '#ff8c00', '#ff7f50', '#ff6347'],
+                    purple: ['#8e44ad', '#9b59b6', '#be2edd', '#e84393', '#fd79a8', '#fdcb6e'],
+                    neon: ['#00ff41', '#ff0080', '#0080ff', '#ffff00', '#ff8000', '#8000ff']
+                };
+
+                const sets = Object.keys(colorSets);
+                const randomSet = sets[Math.floor(Math.random() * sets.length)];
+                const colors = colorSets[randomSet];
+                
+                const sparkCount = size === 'large' ? 20 : size === 'small' ? 8 : 15;
+                const sparkSize = size === 'large' ? 6 : size === 'small' ? 3 : 4;
+                const maxVelocity = size === 'large' ? 120 : size === 'small' ? 60 : 80;
+                
+                // Create explosion sparks
+                for (let i = 0; i < sparkCount; i++) {
+                    const spark = document.createElement('div');
+                    spark.className = 'spark';
+                    spark.style.width = sparkSize + 'px';
+                    spark.style.height = sparkSize + 'px';
+                    spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    spark.style.boxShadow = `0 0 ${sparkSize * 2}px ${spark.style.background}`;
+                    
+                    const angle = (360 / sparkCount * i) * Math.PI / 180;
+                    const velocity = (maxVelocity * 0.5) + Math.random() * (maxVelocity * 0.5);
+                    
+                    spark.style.animation = `sparkFly ${1.5 + Math.random()}s ease-out forwards`;
+                    spark.style.setProperty('--dx', Math.cos(angle) * velocity + 'px');
+                    spark.style.setProperty('--dy', Math.sin(angle) * velocity + 'px');
+                    
+                    firework.appendChild(spark);
+                }
+
+                setTimeout(() => firework.remove(), 2500);
+            }, launchDuration);
+        }
+
+        // Create a spectacular firework burst with multiple rockets
+        function createSpectacularFirework(centerX, targetY) {
+            // Launch main central rocket
+            createFirework(centerX, targetY, 'large');
+            
+            // Launch flanking rockets with slight delays
+            setTimeout(() => {
+                createFirework(centerX - 100, targetY + 50, 'normal');
+                createFirework(centerX + 100, targetY + 50, 'normal');
+            }, 200);
+            
+            // Final small rockets
+            setTimeout(() => {
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        const offsetX = centerX + (Math.random() - 0.5) * 200;
+                        const offsetY = targetY + Math.random() * 100;
+                        createFirework(offsetX, offsetY, 'small');
+                    }, i * 150);
+                }
+            }, 400);
+        }
+
+        // Confetti Animation
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#fbbf24', '#f59e0b', '#d97706', '#92400e'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * window.innerWidth + 'px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 100);
+            }
+        }
+
+        // Number Animation
+        function animateNumbers() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString();
+                    }
+                };
+                
+                setTimeout(updateCounter, 2000);
+            });
+        }
+
+        // Launch fireworks periodically
+        function launchFireworks() {
+            setInterval(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight * 0.6;
+                createFirework(x, y);
+            }, 3000);
+        }
+
+        // Initialize animations with enhanced effects
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial massive confetti burst
+            createConfetti();
+            setTimeout(createConfetti, 1000);
+            
+            // Start continuous fireworks
+            launchFireworks();
+            animateNumbers();
+            
+            // Continuous confetti throughout the experience
+            setInterval(createConfetti, 8000);
+            
+            // Additional confetti bursts at key moments
+            setTimeout(createConfetti, 3000);
+            setTimeout(createConfetti, 6000);
+            setTimeout(createConfetti, 12000);
+            setTimeout(createConfetti, 18000);
+        });
+
+        // Enhanced click interactions - launch rockets towards click position
+        document.addEventListener('click', (e) => {
+            if (Math.random() > 0.6) { // 40% chance
+                // Launch from a random bottom position towards click location
+                const startX = Math.random() * window.innerWidth;
+                const targetY = e.clientY;
+                
+                if (Math.random() > 0.5) {
+                    createSpectacularFirework(startX, targetY);
+                } else {
+                    createFirework(startX, targetY, 'large');
+                }
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
